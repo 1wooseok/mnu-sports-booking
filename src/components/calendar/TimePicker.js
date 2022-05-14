@@ -22,13 +22,13 @@ function TimePicker() {
   const fno = useParams().fno;
   const dateState = useDateState();
   const dateDispatch = useDateDispatch();
-  const { viewMonth, viewDate, reservedTime } = dateState;
+  const { reservedTime } = dateState;
   const [userPick, setUserPick] = useState([]);
 
   useEffect(() => {
     getReservedTimeByDate(fno, dateState, dateDispatch);
     setUserPick([]);
-  }, [viewMonth, viewDate, fno]);
+  }, [fno, dateDispatch, dateState]);
 
   function restrictUserPick(e) {
     const cssClass = e.target.className;
