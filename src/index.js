@@ -17,6 +17,10 @@ import AdminFacilityContainer from "./components/Admin/facility/AdminFacilityCon
 import AdminManageContainer from "./components/Admin/manage/AdminManageContainer";
 import AdminMenu from "./components/Admin//layout/AdminMenu";
 
+// New Admin
+import ControlBooking from "./components/new-admin/ControlBooking";
+
+// Context
 import { FetchContextProvider } from "./context/fetchContext";
 
 ReactDOM.render(
@@ -32,14 +36,17 @@ ReactDOM.render(
           </Route>
 
           {/* Admin */}
-          <Route path="/admin" element={<AdminMain />}>
+          {/* <Route path="/admin" element={<AdminMain />}>
             <Route path="signup" element={<AdminSignUp />} />
             <Route path="login" element={<AdminLogin />} />
             <Route path="main" element={<AdminMenu />} />
             <Route path="booking" element={<AdminBookingContainer />} />
             <Route path="facility" element={<AdminFacilityContainer />} />
             <Route path="manage" element={<AdminManageContainer />} />
-          </Route>
+          </Route> */}
+
+          {/* New Admin */}
+          <Route path="admin" element={<ControlBooking />} />
           {/* 404 */}
           <Route
             path="*"

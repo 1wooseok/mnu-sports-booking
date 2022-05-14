@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { setPlace } from "../../utils/format";
 import "./complete.css";
 
@@ -22,7 +21,7 @@ export default function Complete({ data, fno }) {
           <p><span>시간</span>{setTime(data.selectedTime, data.maxHour)}</p>
         </div>
         <div className="btn_section">
-          <Link to="/mypage/history">예약 내역</Link>
+          <span>확인</span>
         </div>
       </div>
     </div>
