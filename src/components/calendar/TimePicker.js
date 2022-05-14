@@ -22,13 +22,13 @@ function TimePicker() {
   const fno = useParams().fno;
   const dateState = useDateState();
   const dateDispatch = useDateDispatch();
-  const { reservedTime } = dateState;
+  const { viewMonth, viewDate, reservedTime } = dateState;
   const [userPick, setUserPick] = useState([]);
 
   useEffect(() => {
     getReservedTimeByDate(fno, dateState, dateDispatch);
     setUserPick([]);
-  }, [fno, dateDispatch, dateState]);
+  }, [fno, viewMonth, viewDate]);
 
   function restrictUserPick(e) {
     const cssClass = e.target.className;
@@ -54,7 +54,6 @@ function TimePicker() {
   } else {
     BtnList = setDisableTimeList(operatingTime, reservedTime, dateState);
   }
-  // console.log("--여기",{userPick})
   return (
     <StTimeContainer className="__disable" onClick={restrictUserPick}>
       {BtnList.map((options, idx) => {
@@ -100,12 +99,20 @@ async function getReservedTimeByDate(fno, dateState, dispatch) {
 function setDisableTimeList(arr, reservedList, state) {
   const TODAY = new Date();
   const isInvalid = !isValid(TODAY, state, state.viewDate);
-  const isPrevDate = (state.viewYear <= TODAY.getFullYear()) && (state.viewMonth < TODAY.getMonth()+1)
+  const isPrevDate =
+    state.viewYear <= TODAY.getFullYear() &&
+    state.viewMonth < TODAY.getMonth() + 1;
   const result = arr.map((hour) => {
     let isDisable = "";
-    if (isPrevDate) {isDisable = "__disable"};
-    if (isInvalid && isPastTime(hour)) {isDisable = "__disable"}; // 시간과 동시에 만족해야하기때문에 오류임.
-    if (isReservedTime(reservedList, hour)) {isDisable = "__disable"};
+    if (isPrevDate) {
+      isDisable = "__disable";
+    }
+    if (isInvalid && isPastTime(hour)) {
+      isDisable = "__disable";
+    } // 시간과 동시에 만족해야하기때문에 오류임.
+    if (isReservedTime(reservedList, hour)) {
+      isDisable = "__disable";
+    }
     return { isDisable, hour };
   });
   return result;

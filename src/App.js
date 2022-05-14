@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import Logo from "./components/modal/logo";
-import "./App.css";
+import styled from "styled-components";
 
 const facilities = [
   {
@@ -36,33 +35,68 @@ const facilities = [
 ];
 
 function App() {
-  // const [facilities, setFacilities] = useState(null);
-
-  // useEffect(() => {
-  //   getFacilities();
-  // }, []);
-
-  // async function getFacilities() {
-  //   try {
-  //     const response = await axios.get("/");
-  //     console.log(response.data);
-  //     setFacilities(response.data);
-  //   } catch (err) {}
-  // }
-
-  if (!facilities) return;
   return (
-    <div className="App">
+    <StAppContainer>
       <Logo />
-      {facilities.map((facility) => {
-        return (
-          <Link key={facility.name} to={`booking/${facility.fno}`}>
-            {facility.name}
-          </Link>
-        );
+      {facilities.map((facility, idx) => {
+        if (idx === 0) {
+          return (
+            <StAppLink key={idx} to={`booking/${facility.fno}`}>
+              {facility.name}
+            </StAppLink>
+          );
+        }
+        return <StDisableLink key={idx}>{facility.name}</StDisableLink>;
       })}
-    </div>
+    </StAppContainer>
   );
 }
+
+const StAppContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+`;
+
+const StAppLink = styled(Link)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100vw;
+  height: calc(100vh / 4);
+
+  color: black;
+  font-size: large;
+  font-weight: bold;
+
+  background-color: F5F4F2;
+  border-bottom: 1px solid gray;
+
+  opacity: 0.6;
+  transition: 0.3s;
+  &:hover {
+    transition: 0.35;
+    opacity: 1;
+    background-color: white;
+    font-size: 20px;
+  }
+`;
+
+const StDisableLink = styled.span`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: calc(100vh / 4);
+  border-bottom: 1px solid gray;
+  font-size: large;
+  text-decoration: line-through;
+  color: black;
+  transition: 0.3s;
+  opacity: 0.6;
+  background-color: #929292;
+`;
 
 export default App;
