@@ -1,3 +1,4 @@
+[[redirects]]
 from = "/proxy/*"
   to = "proxy": "http://3.94.44.116:8080/:splat"
   status = 200
