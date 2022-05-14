@@ -22,7 +22,6 @@ import AdminFacilityContainer from "./components/Admin/facility/AdminFacilityCon
 import AdminManageContainer from "./components/Admin/manage/AdminManageContainer";
 import AdminMenu from "./components/Admin//layout/AdminMenu";
 
-// context test 중
 import { FetchContextProvider } from "./context/fetchContext";
 
 ReactDOM.render(
