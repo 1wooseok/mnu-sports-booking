@@ -35,21 +35,21 @@ const facilities = [
   },
 ];
 
-async function test() {
-  try {
-    const res = await axios.get('/booking');
-    console.log(res);
-  } catch(err) {
-    console.log(err);
-  }
-}
+// async function test() {
+//   try {
+//     const res = await axios.get('/booking');
+//     console.log(res);
+//   } catch(err) {
+//     console.log(err);
+//   }
+// }
 
 function App() {
   // const [facilities, setFacilities] = useState(null);
 
-  useEffect(() => {
-    test();
-  }, []);
+  // useEffect(() => {
+  //   test();
+  // }, []);
 
   // async function getFacilities() {
   //   try {
