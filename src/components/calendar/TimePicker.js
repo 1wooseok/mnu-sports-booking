@@ -82,6 +82,7 @@ function TimePicker() {
 // ----- Functions -----
 async function getReservedTimeByDate(fno, dateState, dispatch) {
   if (!dateState.viewDate) return;
+  console.log({dateState});
   dispatch({ type: "LOADING" });
   try {
     const res = await getReservedTime(fno, {
