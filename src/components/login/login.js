@@ -45,13 +45,9 @@ export default function Login({ url, nextUrl, signupUrl }) {
         pw: pwRef.current.value,
       };
       const response = await axios.post(url, data);
-
-
-      if (response) {
-        handleSuccess(response.status);
-      }
+      handleSuccess(response.status);
     } catch (err) {
-      console.log(err);
+      console.log(`${err} - 로그인시 발생한 에러`);
       handleError(err.response.status);
     }
   };
@@ -60,7 +56,10 @@ export default function Login({ url, nextUrl, signupUrl }) {
     if (status === 201) {
       if (location.state) {
         return navigate(location.state.prevPath, {
-          state: { dateState: location.state.dateState, userPick: location.state.userPick },
+          state: {
+            dateState: location.state.dateState,
+            userPick: location.state.userPick,
+          },
           replace: true,
         });
       }
@@ -122,5 +121,5 @@ export default function Login({ url, nextUrl, signupUrl }) {
 Login.defaultProps = {
   url: "/students/login",
   nextUrl: "/",
-  signupUrl: "/signup"
+  signupUrl: "/signup",
 };
