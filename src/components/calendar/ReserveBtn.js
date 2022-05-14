@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import { postReserve } from "../../apis/api";
 import { isValid, isPastTime } from "../../utils/check";
@@ -13,25 +12,21 @@ function isValidUserInput(dateState, userPick) {
   return true;
 }
 
-function Reserve({ fno, dateState, userPick }) {
-  const navigate = useNavigate();
-  const location = useLocation();
-
+function ReserveBtn({ fno, dateState, userPick }) {
   const [completeMsg, setCompleteMsg] = useState(null);
 
   async function requestReserve() {
-    if (userPick.length === 0 || !userPick) return;
+    // if (userPick.length === 0 || !userPick) return;
     // if (!isValidUserInput(dateState, userPick)) return;
     try {
       const res = await postReserve(fno, dateState, userPick);
+      console.log(res);
       if (res.status === 201) {
-        location.state = null;
         setCompleteMsg(<Complete data={res.data} fno={fno} />);
       }
     } catch (err) {
-      if (err.response.status === 401) {
-        
-        return navigate("/login", { state : { dateState, userPick, prevPath : location.pathname }});
+      if (err.status === 401) {
+        return alert("로그인이 필요한 서비스 입니다!");
       }
       console.log(`${err} : 예약 신청할때 발생한 에러`);
     }
@@ -60,6 +55,9 @@ const StReserveBtn = styled.div`
   border-radius: 5px;
   font-weight: bold;
   font-size: 12px;
+  &:hover {
+    cursor: pointer
+  }
 `;
 
-export default Reserve;
+export default ReserveBtn;

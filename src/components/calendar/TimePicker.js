@@ -7,7 +7,7 @@ import {
 } from "../../utils/format";
 import { useDateState, useDateDispatch } from "../../context/dateContext";
 import { getReservedTime } from "../../apis/api";
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { isValid, isPastTime } from "../../utils/check";
 import styled from "styled-components";
 import ReserveBtn from "./ReserveBtn";
@@ -19,24 +19,16 @@ const operatingTime = range(openingTime, closingTime);
 const maxHour = 2; // 임시
 
 function TimePicker() {
-  const location = useLocation();
   const fno = useParams().fno;
   const dateState = useDateState();
   const dateDispatch = useDateDispatch();
-  const { viewDate, reservedTime } = dateState;
+  const { viewMonth, viewDate, reservedTime } = dateState;
   const [userPick, setUserPick] = useState([]);
 
   useEffect(() => {
-    // if (location.state && location.state.dateState) {
-    //   dateDispatch({ type: "SET_DATE", payload: location.state.dateState });
-    //   setUserPick(location.state.userPick); // 동작하는데, 아래 어딘가에서 렌더링이 일어나기때문에 else문 setUserPick이 실행됨.
-    //   getReservedTimeByDate(fno, dateState, dateDispatch);
-    //   location.state = null;
-    // } else {
     getReservedTimeByDate(fno, dateState, dateDispatch);
     setUserPick([]);
-    // }
-  }, [viewDate, fno]);
+  }, [viewMonth, viewDate, fno]);
 
   function restrictUserPick(e) {
     const cssClass = e.target.className;
@@ -117,10 +109,6 @@ function setDisableTimeList(arr, reservedList, state) {
     return { isDisable, hour };
   });
   return result;
-}
-
-function test() {
-
 }
 
 function isReservedTime(reservedList, hour) {

@@ -5,7 +5,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 // User
 import App from "./App";
-import Calendar from "./components/booking/calendar";
+import CalendarContainer from "./components/calendar/CalendarContainer";
 import Login from "./components/login/login";
 import Signup from "./components/signup/signup";
 import Facility from "./components/layout/facility";
@@ -34,7 +34,7 @@ ReactDOM.render(
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/booking" element={<Facility />}>
-            <Route path=":fno" element={<Calendar />} />
+            <Route path=":fno" element={<CalendarContainer />} />
             <Route index element={<Navigate replace to="/" />} />
           </Route>
           <Route path="/mypage" element={<Mypage />}>

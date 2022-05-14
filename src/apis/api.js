@@ -11,5 +11,6 @@ export function postReserve(fno, dateState, userPick) {
     maxHour: userPick.length,
     selectedTime: timeFormatter(userPick[0])
   };
+  console.log({ data})
   return axios.post(`/booking/${fno}`, data);
 }
