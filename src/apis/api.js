@@ -2,6 +2,7 @@ import axios from "axios";
 import { fullDateFormatter, timeFormatter } from "../utils/format";
 
 export function getReservedTime(fno, data) {
+  console.log({data});
   return axios.post(`/booking/${fno}/date`, data);
 }
 
