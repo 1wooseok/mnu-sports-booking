@@ -1,0 +1,49 @@
+.test {
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  margin: 20px 10px;
+}
+
+.test > .time {
+  width: calc(100% / 5);
+  text-align: center;
+  border-radius: 5px;
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding: 0.3em 0;;
+  margin: 0.5em;
+}
+
+.test > div:hover {
+  cursor: pointer;
+}
+
+.clicked {
+  background-color: mediumseagreen;
+}
+
+.expire {
+  opacity: 0.2;
+}
+
+.ableClick {
+  color: mediumseagreen;
+}
+
+
+/* RESERVE BUTTON */
+.reserve_btn {
+  background-color: mediumseagreen;
+  border: 1px solid whitesmoke;
+  margin-top: 2em;
+  padding: 0.7em 2em;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.reserve_btn:hover {
+  opacity: 0.9;
+  cursor: pointer;
+} 

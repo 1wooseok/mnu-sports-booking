@@ -1,0 +1,28 @@
+.App {
+  display: flex;
+  flex-direction: column; 
+  width: 100vw;
+  height: 100vh;
+}
+
+.App > a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: calc(100vh / 4);
+  border-bottom: 1px solid gray;
+  font-size: large;
+  text-decoration: none;
+  color: black;
+  transition: 0.3s;
+  opacity: 0.6;
+  background-color: F5F4F2;
+}
+
+.App > a:hover {
+  transition: 0.35;
+  /* transform: scale(1.2); */
+  opacity: 1;
+  background-color: white;
+}
