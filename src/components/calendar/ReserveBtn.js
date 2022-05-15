@@ -1,43 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
-import { postReserve } from "../../apis/api";
-import { isValid, isPastTime } from "../../utils/check";
-import Complete from "../modal/complete";
-
-function isValidUserInput(dateState, userPick) {
-  if (!isValid(new Date(), dateState, dateState, dateState.viewDate))
-    return alert("유효한 날짜를 선택해주세요");
-  if (isPastTime(userPick[0])) return alert("유효한 시간을 입력해 주세요;");
-  console.log(isPastTime(userPick[0]));
-  return true;
-}
+import { useNavigate } from 'react-router-dom';
 
 function ReserveBtn({ fno, dateState, userPick }) {
-  const [completeMsg, setCompleteMsg] = useState(null);
+  const navigate = useNavigate();
 
-  async function requestReserve() {
-    // if (userPick.length === 0 || !userPick) return;
-    // if (!isValidUserInput(dateState, userPick)) return;
-    try {
-      const res = await postReserve(fno, dateState, userPick);
-      console.log(res);
-      if (res.status === 201) {
-        setCompleteMsg(<Complete data={res.data} fno={fno} />);
-      }
-    } catch (err) {
-      if (err.status === 401) {
-        return alert("로그인이 필요한 서비스 입니다!");
-      }
-      console.log(`${err} : 예약 신청할때 발생한 에러`);
-    }
+  function handleClick() {
+    navigate('/login', { state: {fno, dateState, userPick}});
   }
 
   return (
     <>
-      {completeMsg}
       <StReserveBtn
-        onClick={requestReserve}
         className={userPick.length === 0 ? "__disable" : ""}
+        onClick={handleClick}
       >
         예약하기
       </StReserveBtn>

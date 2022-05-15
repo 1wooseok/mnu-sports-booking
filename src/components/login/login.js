@@ -1,125 +1,98 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import { checkIdFormat } from "../../utils/check";
-import Find from "../mypage/find";
-import axios from "axios";
+import useInputChange from "../hook/useInputs";
 import "./login.css";
+import styled from "styled-components";
+import { postReserve } from "../../apis/api";
+import Complete from "../modal/complete";
+import { fullDateFormatter, timeFormatter } from "../../utils/format";
 
-export default function Login({ url, nextUrl, signupUrl }) {
+export default function Login() {
+  const [{ smajor, sname, snum }, onReset, onChange] = useInputChange({
+    smajor: "",
+    sname: "",
+    snum: "",
+  });
+  const [completeMsg, setCompleteMsg] = useState(null);
   const location = useLocation();
-  const navigate = useNavigate();
-
-  const [disabled, setDisabled] = useState(false);
-
-  const idRef = useRef(null);
-  const pwRef = useRef(null);
-
-  useEffect(() => {
-    idRef.current.focus();
-    return () => {
-      setDisabled(false);
-    }; // 나중에 고치기
-  }, []);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    temporarilyDisableSubmit();
-    if (!checkIdFormat(idRef.current.value)) {
-      alert("옳바른 형식의 아이디를 입력해 주세요.");
-      idRef.current.focus();
-      return;
-    }
-    requestLogin();
-  };
-
-  const temporarilyDisableSubmit = async () => {
-    setDisabled((prev) => (prev = true));
-    await new Promise((t) => setTimeout(t, 1000));
-    setDisabled(false);
-  };
-
-  const requestLogin = async () => {
+  
+  async function requestReserve(fno, userInput) {
+    // if (!isValidUserInput(dateState, userPick)) return;
     try {
-      const data = {
-        id: idRef.current.value,
-        pw: pwRef.current.value,
-      };
-      const response = await axios.post(url, data);
-      handleSuccess(response.status);
-    } catch (err) {
-      console.log(`${err} - 로그인시 발생한 에러`);
-      handleError(err.response.status);
-    }
-  };
-
-  const handleSuccess = (status) => {
-    if (status === 201) {
-      if (location.state) {
-        return navigate(location.state.prevPath, {
-          state: {
-            dateState: location.state.dateState,
-            userPick: location.state.userPick,
-          },
-          replace: true,
-        });
+      const res = await postReserve(fno, userInput);
+      console.log(res);
+      if (res.status === 201) {
+        location.state = null;
+        setCompleteMsg(<Complete data={res.data} fno={fno} />);
       }
-      return navigate(nextUrl, { replace: true });
+    } catch (err) {
+      console.log(`${err} : 예약 신청할때 발생한 에러`);
     }
-  };
-
-  const handleError = (status) => {
-    switch (status) {
-      case 401:
-        alert("id를 확인해 주세요.");
-        idRef.current.focus();
-        break;
-      case 404:
-        alert("비밀번호를 확인해 주세요.");
-        pwRef.current.focus();
-        break;
-      default:
-        return;
-    }
-  };
+  }
+  
+  function handleSubmit(e) {
+    e.preventDefault();
+    const { fno, dateState, userPick } = location.state;
+    const userInput = {
+      date: fullDateFormatter(dateState),
+      maxHour: userPick.length,
+      selectedTime: timeFormatter(userPick[0]),
+      smajor: smajor,
+      sname: sname,
+      snum: Number(snum),
+    };
+    requestReserve(fno , userInput)
+  }
 
   return (
     <div>
+      {completeMsg}
+      <StBackBtn>
+        <Link to="/booking/27">&lt; 뒤로가기</Link>
+      </StBackBtn>
       <div className="login-container">
         <form onSubmit={handleSubmit}>
           <input
             className="userId"
-            name="id"
             type="text"
-            placeholder=" 학번"
-            ref={idRef}
+            name="smajor"
+            smajor={smajor}
+            onChange={onChange}
+            placeholder="학과 ex) 컴퓨터공학과"
             required
           />
 
           <input
             className="userPw"
-            name="pw"
-            type="password"
-            placeholder=" 비밀번호"
-            ref={pwRef}
+            type="text"
+            name="snum"
+            snum={snum}
+            placeholder="학번 ex) 000000"
+            onChange={onChange}
             required
           />
-          <button type="submit" className="login-btn" disabled={disabled}>
-            Login
+
+          <input
+            className="userPw"
+            type="text"
+            name="sname"
+            sname={sname}
+            placeholder="이름 ex) 컴퓨터"
+            onChange={onChange}
+            required
+          />
+          <button type="submit" className="login-btn">
+            예약하기
           </button>
         </form>
-        <p className="finding-pw">
-          <Find />
-        </p>
-        <p className="finding-pw">
-          계정이 없으신가요? <Link to={signupUrl}>회원가입</Link>
-        </p>
       </div>
     </div>
   );
 }
 
-Login.defaultProps = {
-  url: "/students/login",
-  nextUrl: "/",
-  signupUrl: "/signup",
-};
+// Style
+const StBackBtn = styled.div`
+  position: fixed;
+  top: 5%;
+`;

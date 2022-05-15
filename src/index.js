@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import App from "./App";
 import CalendarContainer from "./components/calendar/CalendarContainer";
 import Facility from "./components/layout/facility";
+import Login from "./components/login/login";
 
 // Admin
 // import AdminLogin from "./components/Admin/login/AdminLogin";
@@ -19,6 +20,7 @@ import Facility from "./components/layout/facility";
 
 // New Admin
 import AdminContainer from "./components/new-admin/AdminContainer";
+import AdminLogin from "./components/new-admin/AdminLogin.js";
 
 // Context
 import { FetchContextProvider } from "./context/fetchContext";
@@ -30,15 +32,15 @@ ReactDOM.render(
         <Routes>
           {/* User */}
           <Route path="/" element={<App />} />
+          <Route path="login" element={<Login />}/>
           <Route path="/booking" element={<Facility />}>
             <Route path=":fno" element={<CalendarContainer />} />
             <Route index element={<Navigate replace to="/" />} />
           </Route>
 
           {/* New Admin */}
-          <Route path="admin" element={<AdminContainer />} >
-            
-          </Route>
+          <Route path="/admin" element={<AdminContainer />} />
+          <Route path="admin/login" element={<AdminLogin />} />
 
           {/* <Route path="/admin" element={<AdminMain />}>
             <Route path="signup" element={<AdminSignUp />} />

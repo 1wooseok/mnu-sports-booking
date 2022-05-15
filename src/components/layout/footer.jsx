@@ -32,7 +32,7 @@ const Wrap = styled.div`
 `;
 
 const StLink = styled.a`
-  font-size: 12px;
+  font-size: 16px;
   font-weight: normal;
   text-decoration: underline;
   text-underline-position: under;

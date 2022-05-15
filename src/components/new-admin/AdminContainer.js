@@ -15,6 +15,10 @@ async function cancelBooking() {
   }
 }
 
+function handleSearch(sid) {
+  
+}
+
 function AdminContainer() {
   return (
     <StAdminContainer>

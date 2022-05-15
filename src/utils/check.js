@@ -55,3 +55,11 @@ export function isPastTime(hour) {
   const [currHour] = new Date().toTimeString().split(":");
   return Number(hour) < Number(currHour);
 }
+
+export function isValidUserInput(dateState, userPick) {
+  if (!isValid(new Date(), dateState, dateState, dateState.viewDate))
+    return alert("유효한 날짜를 선택해주세요");
+  if (isPastTime(userPick[0])) return alert("유효한 시간을 입력해 주세요;");
+  console.log(isPastTime(userPick[0]));
+  return true;
+}

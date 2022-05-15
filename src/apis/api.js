@@ -1,16 +1,9 @@
 import axios from "axios";
-import { fullDateFormatter, timeFormatter } from "../utils/format";
 
 export function getReservedTime(fno, data) {
-  return axios.post(`/booking/${fno}/date`, data);
+  return axios.post(`/booking/${1}/date`, data);
 }
 
-export function postReserve(fno, dateState, userPick) {
-  const data = {
-    date: fullDateFormatter(dateState),
-    maxHour: userPick.length,
-    selectedTime: timeFormatter(userPick[0])
-  };
-  console.log({ data})
-  return axios.post(`/booking/${fno}`, data);
+export function postReserve(fno, data) {
+  return axios.post(`/booking/${1}`, data);
 }

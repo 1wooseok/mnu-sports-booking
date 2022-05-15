@@ -2,12 +2,11 @@ import React from "react";
 import useInputChange from "../hook/useInputs";
 
 function SearchUser() {
-  const [form, handleChange] = useInputChange({ sid: '' });
-  const { sid } = form;
+  const [{ sid }, onChange] = useInputChange({ sid: '' });
 
   return (
     <form onSubmit={e => e.preventDefault()}>
-      <input type="text" name="sid" value={sid} onChange={handleChange} placeholder="학번으로 검색" />
+      <input type="text" sid={sid} onChange={onChange} placeholder="학번으로 검색" />
       <button>검색</button>
     </form>
   );
