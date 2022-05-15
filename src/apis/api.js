@@ -10,3 +10,14 @@ export function postReserve(fno, data) {
 }
 
 // Admin
+export function postAdminLogin(data) {
+  return axios.post('/admin/login', data);
+}
+
+export function getAllBookingList() {
+  return axios.get('/manage/booking/1');
+}
+
+export function deleteBooking(bno) {
+  return axios.delete(`/manage/booking/${bno}`);
+}

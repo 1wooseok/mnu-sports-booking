@@ -1,29 +1,26 @@
 import React from "react";
 import styled from "styled-components";
 
-function BookingListCard({ cancelBooking }) {
+function BookingListCard({ info }) {
+  const {snum, sname, smajor, startTime, endTime} = info;
   return (
     <StListCard>
       <StInfo>
         <StRow>
           <StKey>사용자 : </StKey>
-          <StValue> 173332 정우석 ( 컴퓨터공학과 )</StValue>
-        </StRow>
-        <StRow>
-          <StKey>연락처 : </StKey>
-          <StValue> 010-2107-9757</StValue>
+          <StValue>{`${snum} ${sname} (${smajor})`}</StValue>
         </StRow>
         <StRow>
           <StKey>날짜 : </StKey>
-          <StValue> 2022.05.15</StValue>
+          <StValue>{startTime.split(' ')[0]}</StValue>
         </StRow>
         <StRow>
           <StKey>시간 : </StKey>
-          <StValue> 14:00 - 16:00</StValue>
+          <StValue>{`${startTime.split(' ')[1]} - ${endTime.split(' ')[1]}`}</StValue>
         </StRow>
       </StInfo>
       <StBtnSection>
-        <StCancelBtn onClick={cancelBooking}>취소</StCancelBtn>
+        <StCancelBtn id={info.bno} className="cancel_booking_btn">취소</StCancelBtn>
       </StBtnSection>
     </StListCard>
   );

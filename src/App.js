@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 const facilities = [
   {
-    fno: 27,
+    fno: 1,
     name: "풋살장",
     place: "공대 근처",
     placeUrl: "www.naver.com",
