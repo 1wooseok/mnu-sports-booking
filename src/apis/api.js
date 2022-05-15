@@ -21,3 +21,7 @@ export function getAllBookingList() {
 export function deleteBooking(bno) {
   return axios.delete(`/manage/booking/${bno}`);
 }
+
+export function checkAdminLogin(data) {
+  return axios.post('/admin/check', data);
+}

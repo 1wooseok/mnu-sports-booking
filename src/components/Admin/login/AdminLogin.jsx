@@ -1,4 +1,4 @@
-import axios from "axios";
+import { postAdminLogin } from "../../../apis/api";
 import React, { useRef } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import styled from "styled-components";
@@ -19,10 +19,8 @@ export default function AdminLogin() {
 
   async function requestAdminLogin(data) {
     try {
-      const response = await axios.post("/admin/login", data);
-      if (response.status === 201) {
-        return navigate("/admin/manage", { replace: true });
-      }
+      await postAdminLogin(data);
+      return navigate("/admin/manage", { replace: true });
     } catch (err) {
       if (err.response.status === 404) {
         alert("입력을 확인해 주세요.");
