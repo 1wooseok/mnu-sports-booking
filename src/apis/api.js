@@ -4,7 +4,7 @@ import { fullDateFormatter, timeFormatter } from "../utils/format";
 const API = window.location.hostname === 'localhost' ? '' : '/api';
 
 export function getReservedTime(fno, data) {
-  return axios.post(`${API}/booking/${fno}/date`, data);
+  return axios.post(`/http://3.94.44.116:8080/booking/${fno}/date`, data);
 }
 
 export function postReserve(fno, dateState, userPick) {
@@ -14,5 +14,5 @@ export function postReserve(fno, dateState, userPick) {
     selectedTime: timeFormatter(userPick[0])
   };
   console.log({ data})
-  return axios.post(`${API}/booking/${fno}`, data);
+  return axios.post(`/http://3.94.44.116:8080/booking/${fno}`, data);
 }

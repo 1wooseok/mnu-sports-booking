@@ -87,7 +87,7 @@ async function getReservedTimeByDate(fno, dateState, dispatch) {
     const res = await getReservedTime(fno, {
       date: fullDateFormatter(dateState),
     });
-
+    console.log(res);
     dispatch({
       type: "SET_TIME",
       payload: setTimeListFromReservedTime(res.data),
