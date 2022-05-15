@@ -1,10 +1,10 @@
 import axios from "axios";
 import { fullDateFormatter, timeFormatter } from "../utils/format";
 
-const PROXY = window.location.hostname === 'localhost' ? '' : '/proxy';
+// const PROXY = window.location.hostname === 'localhost' ? '' : '/proxy';
 
 export function getReservedTime(fno, data) {
-  return axios.post(`${PROXY}/booking/${fno}/date`, data);
+  return axios.post(`/booking/${fno}/date`, data);
 }
 
 export function postReserve(fno, dateState, userPick) {
@@ -14,5 +14,5 @@ export function postReserve(fno, dateState, userPick) {
     selectedTime: timeFormatter(userPick[0])
   };
   console.log({ data})
-  return axios.post(`${PROXY}/booking/${fno}`, data);
+  return axios.post(`/booking/${fno}`, data);
 }
