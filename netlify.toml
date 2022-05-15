@@ -1,5 +1,5 @@
 [[redirects]]
-from = "/proxy/*"
-  to = "http://3.94.44.116:8080/:splat"
+from = "/*"
+  to = "/index.html"
   status = 200
   force = true
