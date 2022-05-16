@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-// import "./logo.css";
 
-export default function Logo() {
+function Logo() {
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
@@ -16,11 +15,7 @@ export default function Logo() {
       {visible && (
         <div>
           <MainLogo></MainLogo>
-          <MnuImg 
-            src="/asset/images/MNU_LOGO.jpeg" 
-            alt="MNU" 
-            width="300" 
-          />
+          <MnuImg src="/asset/images/MNU_LOGO.jpeg" alt="MNU" width="300" />
         </div>
       )}
     </div>
@@ -44,3 +39,5 @@ const MnuImg = styled.img`
   left: 50%;
   transform: translateX(-45%) translateY(-45%);
 `;
+
+export default Logo;

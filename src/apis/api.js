@@ -1,19 +1,27 @@
 import axios from "axios";
-import { fullDateFormatter, timeFormatter } from "../utils/format";
 
-const API = window.location.hostname === 'localhost' ? '' : '/api';
-
+// User
 export function getReservedTime(fno, data) {
-  console.log({ data })
-  return axios.post(`http://3.94.44.116:8080/booking/1/date`, data);
+  return axios.post(`/booking/${1}/date`, data);
 }
 
-export function postReserve(fno, dateState, userPick) {
-  const data = {
-    date: fullDateFormatter(dateState),
-    maxHour: userPick.length,
-    selectedTime: timeFormatter(userPick[0])
-  };
-  console.log({ data})
-  return axios.post(`${API}/booking/${fno}`, data);
+export function postReserve(fno, data) {
+  return axios.post(`/booking/${1}`, data);
+}
+
+// Admin
+export function postAdminLogin(data) {
+  return axios.post('/admin/login', data);
+}
+
+export function getAllBookingList() {
+  return axios.get('/manage/booking/1');
+}
+
+export function deleteBooking(bno) {
+  return axios.delete(`/manage/booking/${bno}`);
+}
+
+export function checkAdminLogin(data) {
+  return axios.post('/admin/check', data);
 }

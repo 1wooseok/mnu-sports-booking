@@ -5,7 +5,7 @@ const surveyLink = "https://naver.me/FIp9ILfg";
 export default function Footer() {
   return (
     <Wrap>
-      <div style={{opacity: 0.4, fontSize: "12px"}}>© 목대컴공</div>
+      <div style={{ opacity: 0.4, fontSize: "12px" }}>© 목대컴공</div>
       <SurveyLink />
     </Wrap>
   );
@@ -13,9 +13,9 @@ export default function Footer() {
 
 function SurveyLink() {
   return (
-      <StLink href={surveyLink} target="_blank" rel="noreferrer">
-        &gt; 피드백을 남겨주세요
-      </StLink>
+    <StLink href={surveyLink} target="_blank" rel="noreferrer">
+      &gt; 피드백을 남겨주세요
+    </StLink>
   );
 }
 
@@ -32,11 +32,12 @@ const Wrap = styled.div`
 `;
 
 const StLink = styled.a`
-  font-size: 8px;
+  font-size: 16px;
   font-weight: normal;
   text-decoration: underline;
   text-underline-position: under;
-  &hover {
+  margin-right: 2.5em;
+  &:hover {
     font-weight: bold;
   }
 `;

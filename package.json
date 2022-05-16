@@ -44,5 +44,8 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://3.94.44.116:8080"
+  "proxy": "http://3.94.44.116:8080",
+  "devDependencies": {
+    "netlify-cli": "^10.3.1"
+  }
 }

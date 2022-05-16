@@ -22,7 +22,7 @@ export default function Complete({ data, fno }) {
           <p><span>시간</span>{setTime(data.selectedTime, data.maxHour)}</p>
         </div>
         <div className="btn_section">
-          <Link to="/mypage/history">예약 내역</Link>
+          <Link to='/booking/27'>확인</Link>
         </div>
       </div>
     </div>

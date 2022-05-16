@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useContext } from "react";
 
 const initialFetchState = {
   loading: false,
@@ -50,4 +50,22 @@ export function FetchContextProvider({ children }) {
       </fetchDispatchContext.Provider>
     </fetchStateContext.Provider>
   );
+}
+
+export function UsefetchState() {
+  const context = useContext(fetchStateContext);
+  if (context === undefined) {
+    throw new Error("useFetch must be used within a FetchContextProvider");
+  }
+  return context;
+}
+
+export function UsefetchDispatch() {
+  const dispatch = useContext(fetchDispatchContext);
+  if (!dispatch) {
+    throw new Error(
+      "useFetchsDispatch must be used within a FetchContextProvider"
+    );
+  }
+  return dispatch;
 }
