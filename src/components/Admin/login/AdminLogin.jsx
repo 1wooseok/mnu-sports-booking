@@ -43,7 +43,7 @@ export default function AdminLogin() {
         <input type="password" name="setPw" ref={pw} placeholder="pw" />
         <button>login</button>
       </FORM>
-      <Link to="/admin/signup">회원가입</Link>
+      {/* <Link to="/admin/signup">회원가입</Link> */}
     </>
   );
 }
