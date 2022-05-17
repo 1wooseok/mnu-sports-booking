@@ -5,6 +5,7 @@ const REGEX = {
   PW : /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
   NAME : /^[가-힣]{2,5}$/,
   PHONE : /^010-?([0-9]{4})-?([0-9]{4})$/,
+  MAJOR : /^[가-힣]+$/,
 }
 
 // Login
@@ -14,6 +15,10 @@ export function checkIdFormat(id) {
 
 export function checkPhoneFormat(phone) {
   return REGEX.PHONE.test(phone);
+}
+
+export function checkMajorFormat(major) {
+  return REGEX.MAJOR.test(major) && major.substr(major.length-2) === '학과';
 }
 
 export function checkNameFormat(name) {

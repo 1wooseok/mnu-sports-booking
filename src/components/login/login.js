@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useNavigate, useLocation, Link } from "react-router-dom";
-import { checkIdFormat } from "../../utils/check";
+import { checkIdFormat, checkNameFormat, checkMajorFormat } from "../../utils/check";
 import useInputChange from "../hook/useInputs";
 import "./login.css";
 import styled from "styled-components";
@@ -18,10 +18,11 @@ export default function Login() {
   const location = useLocation();
   
   async function requestReserve(fno, userInput) {
-    // if (!isValidUserInput(dateState, userPick)) return;
+    if (!checkMajorFormat(smajor)) return alert('옳바른 학과명 입력해 주세요.');
+    if (!checkIdFormat(snum)) return alert('옳바른 학번을 입력해 주세요.');
+    if (!checkNameFormat(sname)) return alert('옳바른 형식의 이름을 입력해 주세요.');
     try {
       const res = await postReserve(fno, userInput);
-      console.log(res);
       if (res.status === 201) {
         location.state = null;
         setCompleteMsg(<Complete data={res.data} fno={fno} />);
