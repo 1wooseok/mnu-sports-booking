@@ -25,3 +25,7 @@ export function deleteBooking(bno) {
 export function checkAdminLogin(data) {
   return axios.post('/admin/check', data);
 }
+
+export function postAdminLogout() {
+  return axios.post('/admin/logout');
+}

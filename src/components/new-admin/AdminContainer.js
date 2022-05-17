@@ -2,14 +2,26 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import BookingListCard from "./BookingListCard";
 import SearchUser from "./SearchUser";
-import { getAllBookingList, deleteBooking } from "../../apis/api";
+import { getAllBookingList, deleteBooking, postAdminLogout } from "../../apis/api";
 import { UsefetchState, UsefetchDispatch } from "../../context/fetchContext";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function AdminContainer() {
   const state = UsefetchState();
   const dispatch = UsefetchDispatch();
+  const navigate = useNavigate();
   const { loading, data, error } = state;
+
+  async function adminLogout() {
+    if (!window.confirm('로그아웃 하시겠습니까?')) return;
+    try {
+      await postAdminLogout();
+      alert('로그아웃 되었습니다.');
+      navigate('/admin/login', { replace : true });
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   useEffect(() => {
     getBookingList(dispatch);
@@ -22,7 +34,8 @@ function AdminContainer() {
 
   return (
     <StAdminContainer>
-      <StTitle>관리자</StTitle>
+      <StHeader>관리자<StLogout onClick={adminLogout}>로그아웃</StLogout></StHeader>
+      
       <SearchUser />
       <StCardContainer onClick={(e) => cancelBooking(e, dispatch, data)}>
         {data.map((info, idx) => {
@@ -59,8 +72,10 @@ async function cancelBooking(e, dispatch, data) {
   }
 }
 
+
+
 function redirectToLogin() {
-  return window.location.href = "/admin/login";
+  return (window.location.href = "/admin/login");
 }
 
 const StAdminContainer = styled.div`
@@ -74,9 +89,25 @@ const StCardContainer = styled.div`
   height: 100%;
   width: 100vw;
 `;
-const StTitle = styled.h2`
-  margin-top: 15px;
+
+const StHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 80vw;
+  margin: 0 auto;
   text-align: center;
+  font-weight: bold;
+  font-size: 30px;
 `;
+
+const StLogout = styled.span`
+  font-size: 15px;
+  opacity: 0.5;
+  &:hover {
+    opacity: 1;
+  }
+`;
+
+
 
 export default AdminContainer;
