@@ -1,14 +1,20 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { setPlace } from "../../utils/format";
 import "./complete.css";
 
 export default function Complete({ data, fno }) {
+  const navigate = useNavigate();
+
   const setTime = (selected, max) => {
     const start = Number(selected.split(":")[0]);
     const end = max === 1 ? `${start}:59` : `${start + Number(max) - 1}:59`;
     return `${selected} - ${end}`;
   };
+
+  function handleClick() {
+    navigate("/booking/27", { replace: true });
+  }
 
   return (
     <div>
@@ -21,9 +27,7 @@ export default function Complete({ data, fno }) {
           <p><span>일정</span>{data.date}</p>
           <p><span>시간</span>{setTime(data.selectedTime, data.maxHour)}</p>
         </div>
-        <div className="btn_section">
-          <Link to='/booking/27'>확인</Link>
-        </div>
+        <div className="btn_section" onClick={handleClick}>확인</div>
       </div>
     </div>
   );

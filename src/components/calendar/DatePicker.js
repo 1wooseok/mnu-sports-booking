@@ -124,7 +124,6 @@ const StHighLight = styled.span`
 
   width: 25px;
   height: 25px;
-  line-height: 28px;
 
   border-radius: 50%;
 
@@ -132,5 +131,6 @@ const StHighLight = styled.span`
   background-color: mediumseagreen;
 
   transform: translateY(-5%);
+  margin: 0.3rem 0 0 0.1rem;
 `;
 export default DatePicker;

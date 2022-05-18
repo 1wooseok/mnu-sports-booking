@@ -1,6 +1,6 @@
 import { postAdminLogin } from "../../../apis/api";
 import React, { useRef } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 export default function AdminLogin() {

@@ -135,8 +135,12 @@ const StTimeBtn = styled.div`
   border: 1px solid grey;
   border-radius: 5px;
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   margin: 0.5em;
-  padding: 0.3em 0;
+  padding: 0.1em 0 0.2em 0;
 
   text-align: center;
 

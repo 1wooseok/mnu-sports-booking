@@ -21,11 +21,11 @@ function CalendarContainer() {
 
 function SurveyLink() {
   return (
-    <div>
+    <StLinkBox>
       <StLink href={surveyLink} target="_blank" rel="noreferrer">
         &gt; 피드백을 남겨주세요
       </StLink>
-    </div>
+    </StLinkBox>
   );
 }
 
@@ -38,8 +38,15 @@ const StCalendarContainer = styled.div`
   font-weight: bold;
 `;
 
+const StLinkBox = styled.div`
+  position: relative;
+  bottom:1rem;
+  right: 0.7rem;
+  color: red;
+`;
+
 const StLink = styled.a`
-  font-size: 14px;
+  font-size: 0.7rem;
   font-weight: normal;
   text-decoration: underline;
   text-underline-position: under;

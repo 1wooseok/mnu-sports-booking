@@ -1,39 +1,59 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate, useLocation, Link } from "react-router-dom";
-import { checkIdFormat, checkNameFormat, checkMajorFormat } from "../../utils/check";
-import useInputChange from "../hook/useInputs";
-import "./login.css";
 import styled from "styled-components";
-import { postReserve } from "../../apis/api";
 import Complete from "../modal/complete";
+import { postReserve } from "../../apis/api";
+import useInputChange from "../hook/useInputs";
 import { fullDateFormatter, timeFormatter } from "../../utils/format";
+import {
+  checkIdFormat,
+  checkNameFormat,
+  checkMajorFormat,
+} from "../../utils/check";
+import "./login.css";
 
 export default function Login() {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [completeMsg, setCompleteMsg] = useState(null);
   const [{ smajor, sname, snum }, onReset, onChange] = useInputChange({
     smajor: "",
     sname: "",
     snum: "",
   });
-  const [completeMsg, setCompleteMsg] = useState(null);
-  const location = useLocation();
-  
+
   async function requestReserve(fno, userInput) {
-    if (!checkMajorFormat(smajor)) return alert('옳바른 학과명 입력해 주세요.');
-    if (!checkIdFormat(snum)) return alert('옳바른 학번을 입력해 주세요.');
-    if (!checkNameFormat(sname)) return alert('옳바른 형식의 이름을 입력해 주세요.');
     try {
       const res = await postReserve(fno, userInput);
       if (res.status === 201) {
         location.state = null;
         setCompleteMsg(<Complete data={res.data} fno={fno} />);
       }
+      if (res.status === 202) {
+        location.state = null;
+        if (
+          window.confirm(
+            "이미 예약된 시간입니다. 다른 시간에 예약하시겠습니까?"
+          )
+        ) {
+          navigate("/booking/27", { replace: true });
+        }
+      }
     } catch (err) {
       console.log(`${err} : 예약 신청할때 발생한 에러`);
     }
   }
-  
+
   function handleSubmit(e) {
     e.preventDefault();
+    if (!checkMajorFormat(smajor)) return alert("옳바른 학과명 입력해 주세요.");
+    if (!checkIdFormat(snum)) return alert("옳바른 학번을 입력해 주세요.");
+    if (!checkNameFormat(sname)) return alert("이름을 확인해 주세요.");
+    if (!location.state) return alert("날짜와 시간을 선택해주세요!");
+    if (!location.state.fno) return alert("날짜와 시간을 선택해주세요!");
+    if (!location.state.dateState) return alert("날짜를 선택해주세요!");
+    if (!location.state.userPick) return alert("시간을 선택해주세요!");
+
     const { fno, dateState, userPick } = location.state;
     const userInput = {
       date: fullDateFormatter(dateState),
@@ -43,7 +63,7 @@ export default function Login() {
       sname: sname,
       snum: Number(snum),
     };
-    requestReserve(fno , userInput)
+    requestReserve(fno, userInput);
   }
 
   return (
@@ -60,7 +80,7 @@ export default function Login() {
             name="smajor"
             smajor={smajor}
             onChange={onChange}
-            placeholder="학과 ex) 컴퓨터공학과"
+            placeholder="학과 ex) ooo학과"
             required
           />
 
@@ -79,7 +99,7 @@ export default function Login() {
             type="text"
             name="sname"
             sname={sname}
-            placeholder="이름 ex) 컴퓨터"
+            placeholder="이름 ex) ooo"
             onChange={onChange}
             required
           />

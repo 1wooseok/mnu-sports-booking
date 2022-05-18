@@ -18,9 +18,3 @@ export function handleError(status) {
       throw new Error(`An Error Occured ( code ) ${status}`);
   }
 }
-
-export function handle202(status) {
-  if (status === 202) {
-    return alert("다른 사용자가 예약한 시간입니다. 다른 시간을 선택해주세요.");
-  }
-}
