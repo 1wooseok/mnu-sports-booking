@@ -9,6 +9,10 @@ export function postReserve(fno, data) {
   return axios.post(`/booking/${1}`, data);
 }
 
+export function getMyBooking(data) {
+  return axios.post(`/booking/check`, data);
+}
+
 // Admin
 export function postAdminLogin(data) {
   return axios.post('/admin/login', data);

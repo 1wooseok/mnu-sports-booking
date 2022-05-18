@@ -3,27 +3,17 @@ import styled from "styled-components";
 import { HiOutlineMenu } from "react-icons/hi";
 import MyList from "./MyList";
 
-function hamburgerReducer(action, state) {
-  switch (action.type) {
-    case "TEXT":
-    case "INPUT":
-    case "HAMBURGER":
-    default:
-      return;
-  }
-}
-
 function HamburgerBtn() {
-  const [myListContainer, setMyListContainer] = useState(false);
+  const [myListVisibility, setMyListVisibility] = useState(false);
   
   function handleClick() {
-    setMyListContainer(prev => !prev);
+    setMyListVisibility(prev => !prev);
   }
 
   return (
     <StHamburgerBtnWrap>
       <HiOutlineMenu onClick={handleClick} />
-      {myListContainer && <MyList />}
+      {myListVisibility && <MyList />}
     </StHamburgerBtnWrap>
   );
 }
@@ -33,21 +23,4 @@ const StHamburgerBtnWrap = styled.span`
   font-size: 20px;
 `;
 
-// const StListToggle = styled.div`
-//   position: absolute;
-//   top: 2.2rem;
-//   right: 0.5rem;
-
-//   width: 7rem;
-//   height: match-content;
-
-//   text-align: center;
-//   z-index: 1001;
-
-//   box-shadow: rgb(0 0 0 / 10%) 0px -1px 0px 0px inset;
-//   border: 1px solid black;
-//   border-radius: 3px;
-
-//   font-size: 16px;
-// `;
 export default HamburgerBtn;

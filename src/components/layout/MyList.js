@@ -2,47 +2,68 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { checkIdFormat } from "../../utils/check";
 import useInputChange from "../hook/useInputs";
+import { getMyBooking } from "../../apis/api";
 
 function MyList() {
-  const [inputToggle, setInputToggle] = useState(false);
-
-  function handleToggle() {
-    setInputToggle((prev) => !prev);
-  }
-  return (
-    <MyListContainer>
-      {inputToggle ? (
-        <SnumInput />
-      ) : (
-        <MyListBtn onClick={handleToggle}>내역보기</MyListBtn>
-      )}
-    </MyListContainer>
+  const myListBtn = (
+    <MyListBtn onClick={() => setCurrentView(snumForm)}>내역보기</MyListBtn>
   );
+  const [currentView, setCurrentView] = useState(myListBtn);
+  const snumForm = <SnumForm setCurrentView={setCurrentView} />;
+  return <MyListContainer>{currentView}</MyListContainer>;
 }
 
-function SnumInput() {
+function SnumForm({ setCurrentView }) {
   const [{ snum }, onReset, onChange] = useInputChange({
     snum: "",
   });
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    if (!checkIdFormat(Number(snum))) {
-      return alert("학번을 확인해주세요.");
-    }
+    if (!checkIdFormat(snum)) return alert("학번을 확인해주세요.");
+    const serverData = await getMyBookingList({ snum });
+    setCurrentView(<ListViewer serverData={serverData} />);
   }
-
-//   async function 
   return (
     <form onSubmit={handleSubmit}>
-      <StSnumInput
+      <StSnumForm
         name="snum"
         value={snum}
         onChange={onChange}
         placeholder="학번을 입력하세요."
+        autoFocus
       />
     </form>
   );
+}
+
+function ListViewer({ serverData }) {
+  console.log(serverData);
+  if (typeof serverData === "string") {
+    return <p>{serverData}</p>;
+  }
+  return (
+    <StListViewer>
+      <ul>
+        {serverData.map((test) => {
+          const date = test.startTime.split(' ')[0];
+          const start = test.startTime.split(' ')[1];
+          const end = test.endTime.split(' ')[1];
+          return <StListCard key={test.bno}><p>{`${date} / ${start} - ${end}`}</p></StListCard>
+        })}
+      </ul>
+    </StListViewer>
+  );
+}
+
+async function getMyBookingList(data) {
+  try {
+    const res = await getMyBooking(data);
+    if (res.status === 202) return res.message;
+    return res.data;
+  } catch (err) {
+    console.log(`${err} - 내 예약목록 가져올때 에러`);
+  }
 }
 
 const MyListContainer = styled.div`
@@ -71,12 +92,22 @@ const MyListBtn = styled.div`
   height: match-content;
 `;
 
-const StSnumInput = styled.input`
+const StSnumForm = styled.input`
   min-width: 7rem;
   max-width: 8.5rem;
 
   border: none;
   outline: none;
   padding: 0 1rem;
+`;
+
+const StListViewer = styled.div`
+  padding: 0.5rem 1rem;
+
+`;
+
+const StListCard = styled.div`
+  border-bottom: 1px solid black;
+  margin: 1rem 0;
 `;
 export default MyList;
