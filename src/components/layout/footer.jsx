@@ -1,23 +1,16 @@
 import styled from "styled-components";
 
-const surveyLink = "https://naver.me/FIp9ILfg";
+
 
 export default function Footer() {
   return (
     <Wrap>
       <div style={{ opacity: 0.4, fontSize: "12px" }}>© 목대컴공</div>
-      <SurveyLink />
     </Wrap>
   );
 }
 
-function SurveyLink() {
-  return (
-    <StLink href={surveyLink} target="_blank" rel="noreferrer">
-      &gt; 피드백을 남겨주세요
-    </StLink>
-  );
-}
+
 
 const Wrap = styled.div`
   position: fixed;
@@ -29,15 +22,4 @@ const Wrap = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-`;
-
-const StLink = styled.a`
-  font-size: 16px;
-  font-weight: normal;
-  text-decoration: underline;
-  text-underline-position: under;
-  margin-right: 2.5em;
-  &:hover {
-    font-weight: bold;
-  }
 `;

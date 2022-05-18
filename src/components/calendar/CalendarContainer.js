@@ -4,6 +4,8 @@ import DatePicker from "./DatePicker";
 import TimePicker from "./TimePicker";
 import styled from "styled-components";
 
+const surveyLink = "https://naver.me/FIp9ILfg";
+
 function CalendarContainer() {
   return (
     <DateContextProvider>
@@ -11,8 +13,19 @@ function CalendarContainer() {
         <DateFilter />
         <DatePicker />
         <TimePicker />
+        <SurveyLink />
       </StCalendarContainer>
     </DateContextProvider>
+  );
+}
+
+function SurveyLink() {
+  return (
+    <div>
+      <StLink href={surveyLink} target="_blank" rel="noreferrer">
+        &gt; 피드백을 남겨주세요
+      </StLink>
+    </div>
   );
 }
 
@@ -24,4 +37,16 @@ const StCalendarContainer = styled.div`
   padding: 10px 0;
   font-weight: bold;
 `;
+
+const StLink = styled.a`
+  font-size: 14px;
+  font-weight: normal;
+  text-decoration: underline;
+  text-underline-position: under;
+  float: right;
+  &:hover {
+    font-weight: 500;
+  }
+`;
+
 export default CalendarContainer;
