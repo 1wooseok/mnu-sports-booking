@@ -36,6 +36,7 @@ const StCalendarContainer = styled.div`
   border-radius: 10px;
   padding: 10px 0;
   font-weight: bold;
+  margin: 50px auto 0 auto;
 `;
 
 const StLinkBox = styled.div`
