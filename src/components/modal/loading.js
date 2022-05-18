@@ -18,6 +18,14 @@ export const TimePickerLoader = () => {
   );
 };
 
+export const SmallLoading = () => {
+  return (
+    <StSamllLoading>
+      <RotatingLines width="30" strokeColor="black" strokeWidth="4" />
+    </StSamllLoading>
+  );
+};
+
 const Position = styled.div`
   position: absolute;
   left: 50%;
@@ -31,7 +39,14 @@ const StTimePickerLoaderPositioner = styled.div`
   top: 65%;
   transform: translate(-50%, -50%);
   z-index: 10;
-
 `;
 
+const StSamllLoading = styled.div`
+  width: 13rem;
+  height: 12rem;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 export default Loading;

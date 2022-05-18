@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { checkIdFormat } from "../../utils/check";
 import useInputChange from "../hook/useInputs";
 import { getMyBooking } from "../../apis/api";
+import { SmallLoading } from "../modal/loading";
 
 function MyList() {
   const myListBtn = (
@@ -21,6 +22,7 @@ function SnumForm({ setCurrentView }) {
   async function handleSubmit(e) {
     e.preventDefault();
     if (!checkIdFormat(snum)) return alert("학번을 확인해주세요.");
+    setCurrentView(() => <SmallLoading />);
     const serverData = await getMyBookingList({ snum });
     setCurrentView(<ListViewer serverData={serverData} />);
   }
@@ -38,18 +40,19 @@ function SnumForm({ setCurrentView }) {
 }
 
 function ListViewer({ serverData }) {
-  console.log(serverData);
-  if (typeof serverData === "string") {
-    return <p>{serverData}</p>;
-  }
+  if (typeof serverData === "string") return <StNoBooking>{serverData}</StNoBooking>;
   return (
     <StListViewer>
       <ul>
-        {serverData.map((test) => {
-          const date = test.startTime.split(' ')[0];
-          const start = test.startTime.split(' ')[1];
-          const end = test.endTime.split(' ')[1];
-          return <StListCard key={test.bno}><p>{`${date} / ${start} - ${end}`}</p></StListCard>
+        {[...serverData].reverse().map((test) => {
+          const date = test.startTime.split(" ")[0];
+          const start = test.startTime.split(" ")[1];
+          const end = test.endTime.split(" ")[1];
+          return (
+            <StListCard key={test.bno}>
+              <p>{`${date} / ${start} - ${end}`}</p>
+            </StListCard>
+          );
         })}
       </ul>
     </StListViewer>
@@ -59,7 +62,6 @@ function ListViewer({ serverData }) {
 async function getMyBookingList(data) {
   try {
     const res = await getMyBooking(data);
-    if (res.status === 202) return res.message;
     return res.data;
   } catch (err) {
     console.log(`${err} - 내 예약목록 가져올때 에러`);
@@ -74,9 +76,9 @@ const MyListContainer = styled.div`
   z-index: 10001;
 
   border-radius: 3px;
+  border: 1px solid silver;
 
   background-color: white;
-  box-shadow: rgb(0 0 0 / 10%) 0px -1px 2px 0px inset;
 
   text-align: center;
   font-size: 14px;
@@ -104,10 +106,21 @@ const StSnumForm = styled.input`
 const StListViewer = styled.div`
   padding: 0.5rem 1rem;
 
+  min-width: 13rem;
+  max-width: 15rem;
+
+  min-height: 12rem;
+  max-height: 12rem;
+
+  overflow: auto;
 `;
 
 const StListCard = styled.div`
   border-bottom: 1px solid black;
-  margin: 1rem 0;
+  padding: 0.5rem 0;
+`;
+
+const StNoBooking = styled.p`
+  padding: 0.2rem 0.7rem;  
 `;
 export default MyList;

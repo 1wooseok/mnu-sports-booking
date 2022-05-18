@@ -9,13 +9,9 @@ export default function Footer() {
 }
 
 const Wrap = styled.div`
-  position: fixed;
+  position: absolute;
   bottom: 0;
   padding: 1em;
 
-  width: 100%;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  width: 90vw;
 `;
