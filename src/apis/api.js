@@ -13,6 +13,10 @@ export function getMyBooking(data) {
   return axios.post(`/booking/check`, data);
 }
 
+export function postCheckDuplicateId(data) {
+  return axios.post(`/students/idcheck`, data)
+}
+
 // Admin
 export function postAdminLogin(data) {
   return axios.post('/admin/login', data);

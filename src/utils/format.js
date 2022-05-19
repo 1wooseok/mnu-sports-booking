@@ -1,4 +1,4 @@
-// ex) 1 -> 01
+// ex) 9 -> 09
 function dateFormatter(date) {
   return Number(date) < 10 ? `0${date}` : date;
 }
@@ -22,9 +22,12 @@ export function range(start, end) {
     .map((_, idx) => start + idx);
 }
 
+// ex "11:00" -> 11
 function stringTimeToNumber(startTime) {
   return Number(startTime.split(" ")[1].split(":")[0]);
 }
+
+// ex data = ["09:00", "10:00", "11:00"] -> [9,10,11]
 export function setTimeListFromReservedTime(data) {
   return data.map((booking) => stringTimeToNumber(booking.startTime));
 }
