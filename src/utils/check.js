@@ -1,4 +1,5 @@
 import { postCheckDuplicateId } from "../apis/api";
+import { dateFormatter } from "./format";
 
 const REGEX = {
   ID: /^[0-9]{6}$/,
@@ -48,11 +49,17 @@ export function isPicked(state, date) {
 //   return new Date(`${state.viewYear}-${state.viewMonth}-${date}`) > TODAY; // 일단 때웟음. 고쳐야함.
 // }
 
+// moth, date를 06 이런식으로 표기해야함.
+// 월 표기시 -1  하여 사용해야함.
 export function isValid(TODAY, state, date) {
   date = date ? date : 1;
-  // moth, date를 06 이런식으로 표기해야함.
-  // 월 표기시 -1  하여 사용해야함.
-  return new Date(state.viewYear, state.viewMonth, date) > TODAY; // 일단 때웟음. 고쳐야함.
+  return (
+    new Date(
+      state.viewYear,
+      dateFormatter(state.viewMonth - 1),
+      dateFormatter(date)
+    ) > TODAY
+  ); // 일단 때웟음. 고쳐야함.
 }
 
 export function isToday(TODAY, state, date) {
@@ -73,6 +80,5 @@ export function isValidUserInput(dateState, userPick) {
   if (!isValid(new Date(), dateState, dateState.viewDate))
     return alert("유효한 날짜를 선택해주세요");
   if (isPastTime(userPick[0])) return alert("유효한 시간을 입력해 주세요;");
-  console.log(isPastTime(userPick[0]));
   return true;
 }

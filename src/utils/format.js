@@ -1,5 +1,5 @@
 // ex) 9 -> 09
-function dateFormatter(date) {
+export function dateFormatter(date) {
   return Number(date) < 10 ? `0${date}` : date;
 }
 

@@ -1,6 +1,6 @@
 import { useDateState, useDateDispatch } from "../../context/dateContext";
 import { isPicked, isValid, isToday } from "../../utils/check";
-import { range } from "../../utils/format";
+import { range, dateFormatter } from "../../utils/format";
 import styled from "styled-components";
 
 function DatePicker() {
@@ -37,13 +37,13 @@ function YoilList() {
 }
 
 function Calendar({ dateState }) {
-  const prevLast = new Date(dateState.viewYear, dateState.viewMonth - 1, 0);
-  const thisLast = new Date(dateState.viewYear, dateState.viewMonth, 0);
-
+  const prevLast = new Date(dateState.viewYear, dateFormatter(dateState.viewMonth - 1), 0);
+  const thisLast = new Date(dateState.viewYear, dateFormatter(dateState.viewMonth), 0);
+  
   const PLDate = prevLast.getDate();
-  const PLDay = prevLast.getDay(); // 이전달 마지막 요일
+  const PLDay = prevLast.getDay(); 
   const TLDate = thisLast.getDate();
-  const TLDay = thisLast.getDay(); // 이번달 마지막 요일
+  const TLDay = thisLast.getDay(); 
 
   const prevDates =
     PLDay === 6 ? [] : setDisable(range(PLDate - PLDay, PLDate));
