@@ -1,0 +1,51 @@
+
+> mnu-sport-facility-booking@0.1.0 start
+> react-scripts start
+
+(node:9696) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:9696) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+Starting the development server...
+
+Compiled successfully!
+
+You can now view mnu-sport-facility-booking in the browser.
+
+  Local:            http://localhost:8080
+  On Your Network:  http://172.31.30.54:8080
+
+Note that the development build is not optimized.
+To create a production build, use npm run build.
+
+asset static/js/bundle.js 1.91 MiB [emitted] (name: main) 1 related asset
+asset index.html 770 bytes [emitted]
+asset asset-manifest.json 190 bytes [emitted]
+cached modules 1.7 MiB (javascript) 28.2 KiB (runtime) [cached] 195 modules
+webpack 5.66.0 compiled successfully in 1930 ms
+
+> mnu-sport-facility-booking@0.1.0 start
+> react-scripts start
+
+(node:12048) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:12048) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+Starting the development server...
+
+Compiled successfully!
+
+You can now view mnu-sport-facility-booking in the browser.
+
+  Local:            http://localhost:8080
+  On Your Network:  http://172.31.30.54:8080
+
+Note that the development build is not optimized.
+To create a production build, use npm run build.
+
+asset static/js/bundle.js 1.91 MiB [emitted] (name: main) 1 related asset
+asset index.html 770 bytes [emitted]
+asset asset-manifest.json 190 bytes [emitted]
+cached modules 1.7 MiB (javascript) 28.2 KiB (runtime) [cached] 195 modules
+webpack 5.66.0 compiled successfully in 1694 ms
+Proxy error: Could not proxy request /booking/1/date from 3.94.44.116:8080 to http://3.94.44.116:1999.
+See https://nodejs.org/api/errors.html#errors_common_system_errors for more information (ECONNREFUSED).
+
