@@ -41,6 +41,7 @@ function SnumForm({ setCurrentView }) {
 
 function ListViewer({ serverData }) {
   if (typeof serverData === "string") return <StNoBooking>{serverData}</StNoBooking>;
+  if (!serverData) return <h1>에러가 발생했습니다. 새로고침 해주세요.</h1>
   return (
     <StListViewer>
       <ul>
