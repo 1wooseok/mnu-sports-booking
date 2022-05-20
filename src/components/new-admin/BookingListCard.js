@@ -20,7 +20,7 @@ function BookingListCard({ info }) {
         </StRow>
       </StInfo>
       <StBtnSection>
-        <StCancelBtn id={info.bno} className="cancel_booking_btn">취소</StCancelBtn>
+        <StCancelBtn data={info.bno} className="cancel_booking_btn">취소</StCancelBtn>
       </StBtnSection>
     </StListCard>
   );
