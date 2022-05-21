@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from "styled-components";
 import { useDateState, useDateDispatch } from "../../context/dateContext";
 

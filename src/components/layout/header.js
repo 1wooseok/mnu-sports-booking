@@ -1,3 +1,4 @@
+import React from 'react';
 import HomeButton from "../button/homeButton";
 import styled from "styled-components";
 import HamburgerBtn from "./HamburgerBtn";
