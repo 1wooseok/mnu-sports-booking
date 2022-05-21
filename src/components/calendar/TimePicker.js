@@ -62,7 +62,8 @@ function TimePicker() {
           cssClass = "pick";
         } else if (
           options.hour - Math.min(...userPick) > 0 &&
-          options.hour - Math.min(...userPick) < maxHour
+          options.hour - Math.min(...userPick) < maxHour &&
+          reservedTime.indexOf(options.hour + (maxHour - userPick.length)) !== -1
         ) {
           cssClass = "adjacentTime";
         }
