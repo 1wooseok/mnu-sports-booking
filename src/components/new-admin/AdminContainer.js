@@ -85,13 +85,13 @@ function redirectToLogin() {
 
 const StAdminContainer = styled.div`
   width: 100vw;
-  height: 100vh;
-  margin: 30px 0;
+  height: 90vh;
 `;
 
 const StCardContainer = styled.div`
   overflow: auto;
-  height: 100%;
+  margin-top: 0.5rem;
+  height: 70vh;
   width: 100vw;
 `;
 
@@ -100,7 +100,7 @@ const StHeader = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 80vw;
-  margin: 0 auto;
+  margin: 0.5rem auto;
   text-align: center;
   font-weight: bold;
   font-size: 30px;

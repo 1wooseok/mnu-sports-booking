@@ -40,7 +40,7 @@ const StListCard = styled.div`
 `;
 
 const StCancelBtn = styled.button`
-  padding: 0.2em 1em;
+  padding: 0.2em 0.5em;
   font-weight: 600;
   background-color: rgb(0, 127, 255);
   color: rgb(255, 255, 255);
