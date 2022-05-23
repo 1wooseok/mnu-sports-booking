@@ -7,7 +7,6 @@ import {
 } from "../../utils/format";
 import { useDateState, useDateDispatch } from "../../context/dateContext";
 import { getReservedTime } from "../../apis/api";
-import { useParams } from "react-router-dom";
 import { isValid, isPastTime } from "../../utils/check";
 import styled from "styled-components";
 import ReserveBtn from "./ReserveBtn";
@@ -19,7 +18,7 @@ const operatingTime = range(openingTime, closingTime);
 const maxHour = 2; // 임시
 
 function TimePicker() {
-  const fno = useParams().fno;
+  const fno = 1 //임시 useParams().fno;
   const dateState = useDateState();
   const dateDispatch = useDateDispatch();
   const { viewMonth, viewDate, reservedTime } = dateState;

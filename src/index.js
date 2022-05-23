@@ -8,7 +8,7 @@ import "./index.css";
 import App from "./App";
 import CalendarContainer from "./components/calendar/CalendarContainer";
 import Facility from "./components/layout/facility";
-import Login from "./components/login/login";
+import ReserveForm from "./components/calendar/ReserveForm";
 
 // Admin
 import AdminLogin from "./components/new-admin/AdminLogin";
@@ -24,7 +24,7 @@ ReactDOM.render(
         <Routes>
           {/* User */}
           <Route path="/" element={<App />} />
-          <Route path="login" element={<Login />} />
+          <Route path="reserve" element={<ReserveForm />} />
           <Route path="/booking" element={<Facility />}>
             <Route path=":fno" element={<CalendarContainer />} />
             <Route index element={<Navigate replace to="/" />} />
@@ -36,14 +36,7 @@ ReactDOM.render(
           <Route path="admin/manage" element={<AdminContainer />} />
 
           {/* 404 */}
-          <Route
-            path="*"
-            element={
-              <div>
-                <p>404 Not Found</p>
-              </div>
-            }
-          />
+          <Route path="*" element={<div>404 Not Found</div>} />
         </Routes>
       </BrowserRouter>
     </FetchContextProvider>

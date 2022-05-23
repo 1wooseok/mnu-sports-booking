@@ -4,9 +4,10 @@ import { dateFormatter } from "./format";
 const REGEX = {
   ID: /^[0-9]{6}$/,
   PW: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
-  NAME: /^[가-힣]{2,5}$/,
+  NAME: /^[가-힣]{2,6}$/,
   PHONE: /^010-?([0-9]{4})-?([0-9]{4})$/,
   MAJOR: /^[가-힣]+$/,
+  NUMBER: /^[0-9]{4}$/,
 };
 
 // Login
@@ -24,6 +25,10 @@ export function checkMajorFormat(major) {
 
 export function checkNameFormat(name) {
   return REGEX.NAME.test(name);
+}
+
+export function checkPasswordFormat(pw) {
+  return REGEX.NUMBER.test(pw);
 }
 
 export function chekcBothPwMatch(pw, confirm) {
@@ -80,5 +85,43 @@ export function isValidUserInput(dateState, userPick) {
   if (!isValid(new Date(), dateState, dateState.viewDate))
     return alert("유효한 날짜를 선택해주세요");
   if (isPastTime(userPick[0])) return alert("유효한 시간을 입력해 주세요;");
+  return true;
+}
+
+// UserInput
+export function checkUserInputBeforeBooking(userInput, location) {
+  const { smajor, sname, snum, spw } = userInput;
+  if (!checkMajorFormat(smajor)) {
+    alert("옳바른 학과명 입력해 주세요.");
+    return false;
+  }
+  if (!checkIdFormat(snum)) {
+    alert("옳바른 학번을 입력해 주세요.");
+    return false;
+  }
+  if (!checkNameFormat(sname)) {
+    alert("이름을 확인해 주세요.");
+    return false;
+  }
+  if (!checkPasswordFormat(spw)) {
+    alert("비밀번호를 확인해 주세요 (숫자 4자리입니다.)");
+    return false;
+  }
+  if (!location.state) {
+    alert("날짜와 시간을 선택해주세요!");
+    return false;
+  }
+  if (!location.state.fno) {
+    alert("날짜와 시간을 선택해주세요!");
+    return false;
+  }
+  if (!location.state.dateState) {
+    alert("날짜를 선택해주세요!");
+    return false;
+  }
+  if (!location.state.userPick) {
+    alert("시간을 선택해주세요!");
+    return false;
+  }
   return true;
 }
