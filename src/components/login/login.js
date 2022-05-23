@@ -11,6 +11,7 @@ import {
   checkMajorFormat,
 } from "../../utils/check";
 import "./login.css";
+import {BiArrowBack} from 'react-icons/bi';
 
 export default function Login() {
   const location = useLocation();
@@ -70,7 +71,7 @@ export default function Login() {
     <div>
       {completeMsg}
       <StBackBtn>
-        <Link to="/booking/27">&lt; 뒤로가기</Link>
+        <BiArrowBack onClick={() => navigate("/booking/26")}></BiArrowBack>
       </StBackBtn>
       <div className="login-container">
         <form onSubmit={handleSubmit}>
