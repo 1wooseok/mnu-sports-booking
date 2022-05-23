@@ -1,4 +1,4 @@
-import { postAdminLogin } from "../../../apis/api";
+import { postAdminLogin } from "../../apis/api"
 import React, { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";

@@ -36,5 +36,5 @@ export default function useInputChange(initialForm) {
     dispatch({ type: "SET_FORM", payload: values });
   }
 
-  return [form, onReset, onChange, setForm];
+  return [form, onChange, setForm, onReset];
 }

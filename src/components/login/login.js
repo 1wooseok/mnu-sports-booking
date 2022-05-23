@@ -16,7 +16,7 @@ export default function Login() {
   const location = useLocation();
   const navigate = useNavigate();
   const [completeMsg, setCompleteMsg] = useState(null);
-  const [{ smajor, sname, snum }, onReset, onChange] = useInputChange({
+  const [{ smajor, sname, snum }, onChange] = useInputChange({
     smajor: "",
     sname: "",
     snum: "",

@@ -10,7 +10,7 @@ import Facility from "./components/layout/facility";
 import Login from "./components/login/login";
 
 // Admin
-import AdminLogin from "./components/Admin/login/AdminLogin";
+import AdminLogin from "./components/new-admin/AdminLogin";
 // import AdminSignUp from "./components/Admin/signup/AdminSignUp";
 import AdminContainer from "./components/new-admin/AdminContainer";
 

@@ -50,12 +50,12 @@ const StCancelBtn = styled.button`
 `;
 
 const StInfo = styled.div`
-  flex: 0.8;
+  flex: 0.85;
 `;
 
 const StBtnSection = styled.div`
   text-align: center;
-  flex: 0.2;
+  flex: 0.15;
 `;
 
 const StRow = styled.div`

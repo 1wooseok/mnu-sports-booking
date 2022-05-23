@@ -15,7 +15,7 @@ function MyList() {
 }
 
 function SnumForm({ setCurrentView }) {
-  const [{ snum }, onReset, onChange] = useInputChange({
+  const [{ snum }, onChange] = useInputChange({
     snum: "",
   });
 

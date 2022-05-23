@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import useInputChange from "../hook/useInputs";
 import styled from "styled-components";
-import { UsefetchState, UsefetchDispatch } from "../../context/fetchContext";
+import useInputChange from "../hook/useInputs";
 import BookingListCard from "./BookingListCard";
-import { cancelBooking } from "./AdminContainer";
+import { cancelBooking } from "./CardContainer";
+import { UsefetchState, UsefetchDispatch } from "../../context/fetchContext";
 
 function SearchUser() {
   const state = UsefetchState();
@@ -11,7 +11,7 @@ function SearchUser() {
 
   const [searchResult, setSearchResult] = useState(false);
   const [visible, setVisible] = useState(true);
-  const [{ snum }, onReset, onChange] = useInputChange({
+  const [{ snum }, onChange] = useInputChange({
     snum: "",
   });
 
@@ -23,7 +23,6 @@ function SearchUser() {
   function searchFromResult() {
     setSearchResult(true);
   }
-
   return (
     <>
       <StSearchForm onSubmit={handleSubmit}>
@@ -47,11 +46,15 @@ function SearchUser() {
             className={visible && "visible"}
             onClick={(e) => cancelBooking(e, dispatch, state.data)}
           >
-            {state.data
-              .filter((user) => Number(user.snum) === Number(snum))
-              .map((user) => (
-                <BookingListCard key={user.bno} info={user} />
-              ))}
+            {state.data.map(user => Number(user.snum)).indexOf(Number(snum)) === -1 ? (
+              <StNoResult>검색 결과가 없습니다.</StNoResult>
+            ) : (
+              state.data
+                .filter((user) => Number(user.snum) === Number(snum))
+                .map((user) => {
+                  return <BookingListCard key={user.bno} info={user} />;
+                })
+            )}
           </StSearchResultContainer>
         </>
       )}
@@ -91,5 +94,7 @@ const StToggleSpan = styled.span`
   border: 1px solid black;
   border-radius: 3px;
 `;
+
+const StNoResult = styled.h3``;
 
 export default SearchUser;
