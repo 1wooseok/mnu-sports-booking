@@ -1,7 +1,7 @@
-import { postAdminLogin } from "../../apis/api"
 import React, { useRef } from "react";
-import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
+import { postAdminLogin } from "../../apis/api";
 
 export default function AdminLogin() {
   const navigate = useNavigate();
@@ -43,7 +43,6 @@ export default function AdminLogin() {
         <input type="password" name="setPw" ref={pw} placeholder="pw" />
         <button>login</button>
       </FORM>
-      {/* <Link to="/admin/signup">회원가입</Link> */}
     </>
   );
 }

@@ -1,9 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { UsefetchDispatch } from "../../context/fetchContext";
-import {
-    getBookingListByDate,
-  } from "../../apis/api";
+import { getBookingListByDate } from "../../apis/api";
 
 function AdminDatePicker() {
   const fetchDispatch = UsefetchDispatch();
@@ -19,17 +17,17 @@ function AdminDatePicker() {
 }
 
 async function fetchBookingListByDate(dispatch, data) {
-    dispatch({ type: "LOADING" });
-    try {
-      const res = await getBookingListByDate({ date: data });
-      dispatch({ type: "SUCCESS", payload: res.data });
-    } catch (err) {
-      if (err.response.status === 403) window.location.href = "/admin/login";
-      dispatch({ type: "ERROR", payload: err });
-    }
+  dispatch({ type: "LOADING" });
+  try {
+    const res = await getBookingListByDate({ date: data });
+    dispatch({ type: "SUCCESS", payload: res.data });
+  } catch (err) {
+    if (err.response.status === 403) window.location.href = "/admin/login";
+    dispatch({ type: "ERROR", payload: err });
   }
-  
-  export default AdminDatePicker;
+}
+
+export default AdminDatePicker;
 
 const StDatePicker = styled.div`
   width: 100vw;

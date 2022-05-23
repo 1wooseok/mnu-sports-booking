@@ -46,7 +46,9 @@ function SearchUser() {
             className={visible && "visible"}
             onClick={(e) => cancelBooking(e, dispatch, state.data)}
           >
-            {state.data.map(user => Number(user.snum)).indexOf(Number(snum)) === -1 ? (
+            {state.data
+              .map((user) => Number(user.snum))
+              .indexOf(Number(snum)) === -1 ? (
               <StNoResult>검색 결과가 없습니다.</StNoResult>
             ) : (
               state.data

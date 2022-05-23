@@ -1,7 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+
+import "./index.css";
 
 // User
 import App from "./App";
@@ -11,7 +12,6 @@ import Login from "./components/login/login";
 
 // Admin
 import AdminLogin from "./components/new-admin/AdminLogin";
-// import AdminSignUp from "./components/Admin/signup/AdminSignUp";
 import AdminContainer from "./components/new-admin/AdminContainer";
 
 // Context
@@ -33,7 +33,6 @@ ReactDOM.render(
           {/* New Admin */}
           <Route path="admin" element={<AdminLogin />} />
           <Route path="admin/login" element={<AdminLogin />} />
-          {/* <Route path="admin/signup" element={<AdminSignUp />} /> */}
           <Route path="admin/manage" element={<AdminContainer />} />
 
           {/* 404 */}
