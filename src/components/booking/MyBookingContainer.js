@@ -1,81 +1,51 @@
-import React, { useReducer } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { SmallLoading } from "../modal/loading";
 import MyBookingViewer from "./MyBookingViewer";
-import useInputChange from "../../hook/useInputs";
-import { SnumForm, SpwForm } from "./MyBookingForm";
-import { getMyBooking, deleteMyBooking } from "../../apis/api";
-
-function viewReducer(state, action) {
-  switch (action.type) {
-    case "SHOW_BTN":
-      return state;
-    case "ID_FORM":
-      console.log(action.payload);
-      return (
-        <SnumForm
-          onChange={action.payload.onChange}
-          snum={action.payload.snum}
-        />
-      );
-    case "PW_FORM":
-      return (
-        <SpwForm onChange={action.payload.onChange} spw={action.payload.spw} />
-      );
-    case "MY_LIST":
-      return <MyBookingViewer data={action.payload} />;
-    case "LOADING":
-      return <SmallLoading />;
-    default:
-      return state;
-  }
-}
+import { SnumForm } from "./MyBookingForm";
 
 function MyBookingContainer() {
-  const [{ snum, spw }, onChange] = useInputChange({ snum: "", spw: "" });
-  const [viewState, dispatch] = useReducer(
-    viewReducer,
-    <StShowBtn onClick={handleShowBtn}>내역보기</StShowBtn>
+  const [data, setData] = useState(null);
+  const [viewState, setViewState] = useState({
+    showBtn: true,
+    idForm: false,
+    listViewer: false,
+    loading: false,
+  });
+
+  const [inputState, setInputState] = useState({
+    snum: "",
+  });
+
+  const { snum } = inputState;
+
+  const { showBtn, idForm, listViewer, loading } = viewState;
+
+  function showBtnHandler() {
+    setViewState({
+      ...viewState,
+      showBtn: !showBtn,
+      idForm: !idForm,
+    });
+  }
+
+  return (
+    <StContainer>
+      {loading && <SmallLoading />}
+      {showBtn && <StShowBtn onClick={showBtnHandler}>내역보기</StShowBtn>}
+      {idForm && (
+        <SnumForm
+          inputState={inputState}
+          setInputState={setInputState}
+          setViewState={setViewState}
+          setData={setData}
+        />
+      )}
+      {listViewer && (
+        <MyBookingViewer snum={snum} data={data} setViewState={setViewState} />
+      )}
+    </StContainer>
   );
-
-  function handleShowBtn() {
-    dispatch({ type: "ID_FORM", payload: { onChange, snum } });
-  }
-
-  function hadleIdForm() {
-    dispatch({ type: "LOADING" });
-    const data = getMyBookingList(snum);
-    dispatch({ type: "MY_LIST", payload: { data } });
-  }
-
-  function handleDeleteBtn() {
-    dispatch({ type: "PW_FORM", payload: { onChange, spw } });
-  }
-
-  // function handleDeleteForm(data) {
-  //   dispatch({ type: "LOADING" });
-  //   const data = cancelMyBooking(data);
-
-  // }
-  return <StContainer>{viewState}</StContainer>;
-}
-
-async function getMyBookingList(snum) {
-  try {
-    const res = await getMyBooking({ snum });
-    return res.data;
-  } catch (err) {
-    throw new Error(`${err} - 내 예약목록 받아올떄 에러 `);
-  }
-}
-
-async function cancelMyBooking(data) {
-  try {
-    const res = await deleteMyBooking(data);
-    return res.data;
-  } catch (err) {
-    console.log(`${err} - 내 예약 취소할때 에러 `);
-  }
 }
 
 const StContainer = styled.div`

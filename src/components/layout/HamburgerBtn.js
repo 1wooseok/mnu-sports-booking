@@ -11,7 +11,7 @@ function HamburgerBtn() {
   return (
     <StHamburgerBtnWrap>
       <HiOutlineMenu onClick={() => setMyListVisibility((prev) => !prev)} />
-      {myListVisibility && <MyList />} 
+      {myListVisibility && <MyBookingContainer />} 
     </StHamburgerBtnWrap>
   );
 }

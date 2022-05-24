@@ -7,8 +7,6 @@ import { getMyBooking, deleteMyBooking } from "../../apis/api";
 import { checkIdFormat, checkPasswordFormat } from "../../utils/check";
 
 function MyList() {
-  
-
   const myListBtn = (
     <MyListBtn onClick={() => setCurrentView(snumForm)}>내역보기</MyListBtn>
   );

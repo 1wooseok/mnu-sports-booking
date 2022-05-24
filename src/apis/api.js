@@ -20,7 +20,8 @@ export function postCheckDuplicateId(data) {
 }
 
 export function deleteMyBooking(data) {
-  return axios.delete(`/booking/booking/snum`, data);
+  console.log(data);
+  return axios.delete("/booking/booking/snum", data);
 }
 
 // Admin
@@ -31,7 +32,6 @@ export function postAdminLogin(data) {
 export function getAllBookingList() {
   return axios.get(`/manage/booking/${fno}`);
 }
-
 
 export function getBookingListByDate(data) {
   return axios.post(`/manage/booking/${fno}/date`, data)

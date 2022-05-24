@@ -5,7 +5,7 @@ import { BiArrowBack } from "react-icons/bi";
 import { postReserve } from "../../apis/api";
 import useInputChange from "../../hook/useInputs";
 import { checkUserInputBeforeBooking } from "../../utils/check";
-import { useNavigate, useLocation, Link } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { fullDateFormatter, timeFormatter } from "../../utils/format";
 
 export default function Login() {
