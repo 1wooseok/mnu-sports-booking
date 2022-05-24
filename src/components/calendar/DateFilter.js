@@ -25,7 +25,7 @@ const StyFilterContainer = styled.div`
 `;
 
 const StyDiv = styled.div`
-  width: 100px;
+  width: 110px;
   text-align: center;
 `;
 

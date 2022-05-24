@@ -48,12 +48,6 @@ export function isPicked(state, date) {
   return Number(date) === Number(state.viewDate);
 }
 
-// LEGACY isValid
-// export function isValid(TODAY, state, date) {
-//   date = date ? date : 1;
-//   return new Date(`${state.viewYear}-${state.viewMonth}-${date}`) > TODAY; // 일단 때웟음. 고쳐야함.
-// }
-
 // moth, date를 06 이런식으로 표기해야함.
 // 월 표기시 -1  하여 사용해야함.
 export function isValid(TODAY, state, date) {
@@ -64,7 +58,7 @@ export function isValid(TODAY, state, date) {
       dateFormatter(state.viewMonth - 1),
       dateFormatter(date)
     ) > TODAY
-  ); // 일단 때웟음. 고쳐야함.
+  ); 
 }
 
 export function isToday(TODAY, state, date) {

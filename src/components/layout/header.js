@@ -1,5 +1,5 @@
 import React from 'react';
-import HomeButton from "../button/homeButton";
+import HomeButton from "./homeButton";
 import styled from "styled-components";
 import HamburgerBtn from "./HamburgerBtn";
 

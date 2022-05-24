@@ -1,20 +1,17 @@
-import React from 'react';
+import React from "react";
+import MyList from "./MyList";
 import { useState } from "react";
 import styled from "styled-components";
 import { HiOutlineMenu } from "react-icons/hi";
-import MyList from "./MyList";
+import MyBookingContainer from "../booking/MyBookingContainer";
 
 function HamburgerBtn() {
   const [myListVisibility, setMyListVisibility] = useState(false);
-  
-  function handleClick() {
-    setMyListVisibility(prev => !prev);
-  }
 
   return (
     <StHamburgerBtnWrap>
-      <HiOutlineMenu onClick={handleClick} />
-      {myListVisibility && <MyList />}
+      <HiOutlineMenu onClick={() => setMyListVisibility((prev) => !prev)} />
+      {myListVisibility && <MyList />} 
     </StHamburgerBtnWrap>
   );
 }

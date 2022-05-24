@@ -21,7 +21,7 @@ function SurveyLink() {
 `;
 
 const StLink = styled.a`
-  font-size: 0.7rem;
+  font-size: 0.6rem;
   font-weight: normal;
   text-decoration: underline;
   text-underline-position: under;

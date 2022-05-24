@@ -19,6 +19,10 @@ export function postCheckDuplicateId(data) {
   return axios.post(`/students/idcheck`, data);
 }
 
+export function deleteMyBooking(data) {
+  return axios.delete(`/booking/booking/snum`, data);
+}
+
 // Admin
 export function postAdminLogin(data) {
   return axios.post("/admin/login", data);

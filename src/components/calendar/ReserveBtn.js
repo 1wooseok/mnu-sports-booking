@@ -27,7 +27,7 @@ const StReserveBtn = styled.div`
   background-color: mediumseagreen;
   border: 1px solid whitesmoke;
   transition: opacity 0.1s;
-  margin-top: 2em;
+  margin: 0.6em 0;
   padding: 0.6em 2em;
   border-radius: 5px;
   font-weight: bold;

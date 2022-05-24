@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import useInputChange from "../hook/useInputs";
+import useInputChange from "../../hook/useInputs"
 import BookingListCard from "./BookingListCard";
 import { cancelBooking } from "./CardContainer";
 import { UsefetchState, UsefetchDispatch } from "../../context/fetchContext";

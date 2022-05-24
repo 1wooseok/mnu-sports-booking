@@ -126,7 +126,6 @@ const StTimeContainer = styled.div`
   display: flex;
   justify-content: center;
   flex-flow: row wrap;
-  margin: 20px 10px;
 `;
 
 const StTimeBtn = styled.div`

@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Complete from "../modal/complete";
 import { BiArrowBack } from "react-icons/bi";
 import { postReserve } from "../../apis/api";
-import useInputChange from "../hook/useInputs";
+import useInputChange from "../../hook/useInputs";
 import { checkUserInputBeforeBooking } from "../../utils/check";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import { fullDateFormatter, timeFormatter } from "../../utils/format";
