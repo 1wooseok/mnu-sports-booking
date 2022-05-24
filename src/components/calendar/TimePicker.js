@@ -11,14 +11,15 @@ import { isValid, isPastTime } from "../../utils/check";
 import styled from "styled-components";
 import ReserveBtn from "./ReserveBtn";
 import { TimePickerLoader } from "../modal/loading";
-
+import SurveyLink from "./SurvetLink";
+import KakaoChannel from "../../apis/KakaoChannel";
 const openingTime = 8;
 const closingTime = 19;
 const operatingTime = range(openingTime, closingTime);
 const maxHour = 2; // 임시
 
 function TimePicker() {
-  const fno = 1 //임시 useParams().fno;
+  const fno = 1; //임시 useParams().fno;
   const dateState = useDateState();
   const dateDispatch = useDateDispatch();
   const { viewMonth, viewDate, reservedTime } = dateState;
@@ -72,7 +73,17 @@ function TimePicker() {
           </StTimeBtn>
         );
       })}
-      <ReserveBtn fno={fno} userPick={userPick} dateState={dateState} />
+      <StCalendarFooter>
+        <StKakaoWrap>
+          <KakaoChannel />
+        </StKakaoWrap>
+        <StReserveWrap>
+          <ReserveBtn fno={fno} userPick={userPick} dateState={dateState} />
+        </StReserveWrap>
+        <StSurveyWrap>
+          <SurveyLink />
+        </StSurveyWrap>
+      </StCalendarFooter>
       {!reservedTime && <TimePickerLoader />}
     </StTimeContainer>
   );
@@ -159,6 +170,26 @@ const StTimeBtn = styled.div`
     cursor: ${(props) =>
       props.className === "__disable" ? "not-allowed" : "pointer"};
   }
+`;
+
+const StCalendarFooter = styled.div`
+  width: 100%;
+  display: flex;
+  ${"" /* justify-content: space-around; */}
+  align-items: end;
+`;
+
+const StKakaoWrap = styled.div`
+  flex: 1.5;
+  line-height: 0.1em;
+
+`;
+const StReserveWrap = styled.div`
+  flex: 2;
+
+`;
+const StSurveyWrap = styled.div`
+  flex: 1.5;
 `;
 
 export default React.memo(TimePicker);

@@ -23,11 +23,12 @@ function ReserveBtn({ fno, dateState, userPick }) {
 }
 
 const StReserveBtn = styled.div`
+  width: 8em;
   opacity: ${(props) => (props.className === "__disable" ? "0.4" : "1")};
   background-color: mediumseagreen;
   border: 1px solid whitesmoke;
   transition: opacity 0.1s;
-  margin: 0.6em 0;
+  margin: 0.6em auto 0 auto;
   padding: 0.6em 2em;
   border-radius: 5px;
   font-weight: bold;

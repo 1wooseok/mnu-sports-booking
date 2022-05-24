@@ -4,6 +4,7 @@ import DateFilter from "./DateFilter";
 import DatePicker from "./DatePicker";
 import TimePicker from "./TimePicker";
 import SurveyLink from "./SurvetLink";
+import KakaoChannel from '../../apis/KakaoChannel';
 import styled from "styled-components";
 
 function CalendarContainer() {
@@ -13,7 +14,6 @@ function CalendarContainer() {
         <DateFilter />
         <DatePicker />
         <TimePicker />
-        <SurveyLink />
       </StCalendarContainer>
     </DateContextProvider>
   );

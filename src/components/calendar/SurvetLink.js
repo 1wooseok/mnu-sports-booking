@@ -7,21 +7,21 @@ function SurveyLink() {
     return (
       <StLinkBox>
         <StLink href={surveyLink} target="_blank" rel="noreferrer">
-          &gt; 피드백을 남겨주세요
+          &gt; 피드백 남기기
         </StLink>
       </StLinkBox>
     );
   }
 
   const StLinkBox = styled.div`
-  position: relative;
+  ${'' /* position: relative; */}
   bottom:1rem;
   right: 0.7rem;
-  color: red;
+  margin-right: 0.8em;
 `;
 
 const StLink = styled.a`
-  font-size: 0.6rem;
+  font-size: 0.5rem;
   font-weight: normal;
   text-decoration: underline;
   text-underline-position: under;

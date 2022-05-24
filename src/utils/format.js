@@ -35,6 +35,8 @@ export function setTimeListFromReservedTime(data) {
 // Facility
 export function setPlace(item) {
   switch (item) {
+    case 1:
+      return "풋살장";
     case 27:
       return "풋살장";
     case 29:

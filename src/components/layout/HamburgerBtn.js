@@ -1,17 +1,25 @@
 import React from "react";
-import MyList from "./MyList";
 import { useState } from "react";
 import styled from "styled-components";
+import { CgClose } from "react-icons/cg";
 import { HiOutlineMenu } from "react-icons/hi";
-import MyBookingContainer from "../booking/MyBookingContainer";
+import MyBookingContainer from "../myBooking/MyBookingContainer";
 
 function HamburgerBtn() {
   const [myListVisibility, setMyListVisibility] = useState(false);
 
+  function toggle() {
+    setMyListVisibility((prev) => !prev);
+  }
+
   return (
     <StHamburgerBtnWrap>
-      <HiOutlineMenu onClick={() => setMyListVisibility((prev) => !prev)} />
-      {myListVisibility && <MyBookingContainer />} 
+      {myListVisibility ? (
+        <CgClose onClick={toggle} />
+      ) : (
+        <HiOutlineMenu onClick={toggle} />
+      )}
+      {myListVisibility && <MyBookingContainer />}
     </StHamburgerBtnWrap>
   );
 }

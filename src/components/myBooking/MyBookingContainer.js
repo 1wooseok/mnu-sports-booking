@@ -12,13 +12,9 @@ function MyBookingContainer() {
     listViewer: false,
     loading: false,
   });
-
-  const [inputState, setInputState] = useState({
-    snum: "",
-  });
+  const [inputState, setInputState] = useState({ snum: "" });
 
   const { snum } = inputState;
-
   const { showBtn, idForm, listViewer, loading } = viewState;
 
   function showBtnHandler() {
@@ -42,7 +38,11 @@ function MyBookingContainer() {
         />
       )}
       {listViewer && (
-        <MyBookingViewer snum={snum} data={data} setViewState={setViewState} />
+        <MyBookingViewer
+          snum={snum}
+          data={data}
+          setData={setData}
+        />
       )}
     </StContainer>
   );

@@ -29,7 +29,7 @@ export function SnumForm({ inputState, setInputState, setViewState, setData }) {
         listViewer: true,
       }));
     } catch (err) {
-      console.log(`${err} - 내 예약목록 받아올떄 에러 `);
+      throw new Error(alert('데이터를 받아오는데 실패했습니다. 새로고침해주세요.'));
     }
     setViewState((prev) => ({
       ...prev,
@@ -58,13 +58,12 @@ export function SnumForm({ inputState, setInputState, setViewState, setData }) {
   );
 }
 
-export function SpwForm({ bno, snum, spw, setSpw }) {
+export function SpwForm({ bno, snum, spw, setSpw, setData }) {
   const [pwForm, setPwForm] = useState(false);
 
   async function handleSubmit(e) {
     e.preventDefault();
     if (!checkPasswordFormat(spw)) return alert("비밀번호를 확인해주세요.");
-
     const testData = {
       bno: Number(bno),
       snum: Number(snum),
@@ -72,10 +71,16 @@ export function SpwForm({ bno, snum, spw, setSpw }) {
     };
     try {
       const res = await deleteMyBooking(testData);
-      console.log(res);
-      console.log(res.data);
+      if (res.status === 202) {
+        return alert(res.data);
+      }
+      if (res.status === 204) {
+        alert("취소되었습니다.");
+        setPwForm(false);
+        setData(prev => prev.filter(booking => booking.bno !== bno));
+      }
     } catch (err) {
-      console.log(`${err} - 내 예약 취소할때 에러 `);
+      throw new Error(alert('예약을 취소하는데 실패했습니다. 새로고침후 다시 시도해주세요.'));
     }
   }
 
@@ -93,6 +98,7 @@ export function SpwForm({ bno, snum, spw, setSpw }) {
           <BiArrowBack onClick={() => setPwForm(false)} />
           <form onSubmit={handleSubmit}>
             <StPwInput
+              type="password"
               onChange={handleChange}
               name="spw"
               spw={spw}

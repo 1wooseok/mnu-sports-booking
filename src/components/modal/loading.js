@@ -26,6 +26,14 @@ export const SmallLoading = () => {
   );
 };
 
+export const BtnLoading = () => {
+  return (
+    <StBtnLoading>
+      <RotatingLines width="30" strokeColor="black" strokeWidth="4" />
+    </StBtnLoading>
+  )
+}
+
 const Position = styled.div`
   position: absolute;
   left: 50%;
@@ -49,4 +57,13 @@ const StSamllLoading = styled.div`
   justify-content: center;
   align-items: center;
 `;
+
+const StBtnLoading = styled.div`
+  height: 1em;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 export default Loading;

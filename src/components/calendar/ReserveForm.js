@@ -3,14 +3,17 @@ import styled from "styled-components";
 import Complete from "../modal/complete";
 import { BiArrowBack } from "react-icons/bi";
 import { postReserve } from "../../apis/api";
+import { BtnLoading } from "../modal/loading";
 import useInputChange from "../../hook/useInputs";
 import { checkUserInputBeforeBooking } from "../../utils/check";
 import { useNavigate, useLocation } from "react-router-dom";
 import { fullDateFormatter, timeFormatter } from "../../utils/format";
 
+
 export default function Login() {
   const location = useLocation();
   const navigate = useNavigate();
+  const [text, setText] = useState("예약하기");
   const [completeMsg, setCompleteMsg] = useState(null);
   const [userInput, onChange] = useInputChange({
     smajor: "",
@@ -21,10 +24,12 @@ export default function Login() {
   const { smajor, sname, snum, spw } = userInput;
 
   async function requestReserve(fno, payload) {
+    setText(<BtnLoading />)
     try {
       const res = await postReserve(fno, payload);
       if (res.status === 201) {
         location.state = null;
+        setText("예약하기");
         setCompleteMsg(<Complete data={res.data} fno={fno} />);
       }
       if (res.status === 202) {
@@ -38,7 +43,9 @@ export default function Login() {
         }
       }
     } catch (err) {
-      console.log(`${err} : 예약 신청할때 발생한 에러`);
+      setText("예약하기");
+      alert("예약중 오류가 발생했습니다. 뒤로가서 다시 시도해주세요");
+      throw new Error(navigate("/booking/27"));
     }
   }
 
@@ -93,7 +100,7 @@ export default function Login() {
             onChange={onChange}
             required
           />
-          <StSubmitBtn>예약하기</StSubmitBtn>
+          <StSubmitBtn>{text}</StSubmitBtn>
         </form>
       </StContainer>
     </div>

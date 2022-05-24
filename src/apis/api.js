@@ -20,8 +20,7 @@ export function postCheckDuplicateId(data) {
 }
 
 export function deleteMyBooking(data) {
-  console.log(data);
-  return axios.delete("/booking/booking/snum", data);
+  return axios.delete("/booking/booking/snum", {data});
 }
 
 // Admin
