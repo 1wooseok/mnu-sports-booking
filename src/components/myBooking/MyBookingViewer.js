@@ -59,9 +59,3 @@ const StListCard = styled.div`
 const StNoResult = styled.p`
   padding: 0.2rem 0.7rem;
 `;
-
-const StXbtnWrap = styled.div`
-  display: flex;
-  align-items: center;
-`;
-

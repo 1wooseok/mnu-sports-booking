@@ -29,10 +29,11 @@ const StReserveBtn = styled.div`
   border: 1px solid whitesmoke;
   transition: opacity 0.1s;
   margin: 0.6em auto 0 auto;
-  padding: 0.6em 2em;
+  padding: 0.6em 1em;
   border-radius: 5px;
   font-weight: bold;
   font-size: 12px;
+  text-align: center;
   &:hover {
     cursor: pointer
   }

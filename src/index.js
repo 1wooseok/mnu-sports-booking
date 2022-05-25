@@ -3,7 +3,6 @@ import ReactDOM from "react-dom";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import "./index.css";
-import KakaoChannel from "./apis/KakaoChannel";
 
 // User
 import App from "./App";

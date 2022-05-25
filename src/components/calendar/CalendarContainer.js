@@ -3,8 +3,6 @@ import { DateContextProvider } from "../../context/dateContext";
 import DateFilter from "./DateFilter";
 import DatePicker from "./DatePicker";
 import TimePicker from "./TimePicker";
-import SurveyLink from "./SurvetLink";
-import KakaoChannel from '../../apis/KakaoChannel';
 import styled from "styled-components";
 
 function CalendarContainer() {
@@ -26,7 +24,7 @@ const StCalendarContainer = styled.div`
   border-radius: 10px;
   padding: 10px 0;
   font-weight: bold;
-  margin: 50px auto 0 auto;
+  margin: 0 auto 0 auto;
 `;
 
 export default CalendarContainer;
