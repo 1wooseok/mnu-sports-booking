@@ -6,7 +6,7 @@ function MyBookingViewer({ snum, data, setData }) {
   const [spw, setSpw] = useState("");
 
   if (!data) return <h1>오류가 발생했습니다. 새로고침후 시도해주세요.</h1>;
-  if (data.length === 0) return <StNoResult>{data}</StNoResult>;
+  if (data.length === 0) return <StNoResult>예약건이 없습니다.</StNoResult>;
   if (typeof data === "string") return <StNoResult>{data}</StNoResult>;
 
   return (

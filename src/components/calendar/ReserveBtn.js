@@ -6,8 +6,8 @@ function ReserveBtn({ fno, dateState, userPick }) {
   const navigate = useNavigate();
 
   function handleClick() {
-    if(userPick.length === 0) return;
-    navigate('/reserve', { state: {fno, dateState, userPick}});
+    if (userPick.length === 0) return;
+    navigate('/reserve', { state: { fno, dateState, userPick } });
   }
 
   return (
