@@ -6,13 +6,13 @@ import { postReserve } from "../../apis/api";
 import { BtnLoading } from "../modal/loading";
 import useInputChange from "../../hook/useInputs";
 import { checkUserInputBeforeBooking } from "../../utils/check";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { useNavigate } from "../../hook/useNavigate";
 import { fullDateFormatter, timeFormatter } from "../../utils/format";
 
-
 export default function Login() {
-  const location = useLocation();
   const navigate = useNavigate();
+  const location = useLocation();
   const [text, setText] = useState("예약하기");
   const [completeMsg, setCompleteMsg] = useState(null);
   const [userInput, onChange] = useInputChange({
@@ -39,13 +39,13 @@ export default function Login() {
             "이미 예약된 시간입니다. 다른 시간에 예약하시겠습니까?"
           )
         ) {
-          navigate("/booking/27", { replace: true });
+          navigate("/booking/27"); // navigate
         }
       }
     } catch (err) {
       setText("예약하기");
       alert("예약중 오류가 발생했습니다. 뒤로가서 다시 시도해주세요");
-      throw new Error(navigate("/booking/27"));
+      throw new Error(navigate("/booking/27")); // navigate
     }
   }
 
@@ -107,7 +107,6 @@ export default function Login() {
   );
 }
 
-// Style
 const StContainer = styled.div`
   display: flex;
   flex-direction: column;

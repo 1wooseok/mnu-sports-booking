@@ -6,13 +6,14 @@ import {
   setTimeListFromReservedTime,
 } from "../../utils/format";
 import { useDateState, useDateDispatch } from "../../context/dateContext";
-import { getReservedTime } from "../../apis/api";
 import { isValid, isPastTime } from "../../utils/check";
-import styled from "styled-components";
-import ReserveBtn from "./ReserveBtn";
 import { TimePickerLoader } from "../modal/loading";
-import SurveyLink from "./SurvetLink";
+import { getReservedTime } from "../../apis/api";
 import KakaoChannel from "../../apis/KakaoChannel";
+import ReserveBtn from "./ReserveBtn";
+import SurveyLink from "./SurvetLink";
+import styled from "styled-components";
+
 const openingTime = 8;
 const closingTime = 19;
 const operatingTime = range(openingTime, closingTime);
@@ -158,8 +159,8 @@ const StTimeBtn = styled.div`
     props.className === "pick"
       ? "white"
       : props.className === "adjacentTime"
-      ? "mediumseagreen"
-      : "black"};
+        ? "mediumseagreen"
+        : "black"};
 
   background-color: ${(props) =>
     props.className === "pick" ? "mediumseagreen" : "white"};
@@ -168,7 +169,7 @@ const StTimeBtn = styled.div`
 
   &:hover {
     cursor: ${(props) =>
-      props.className === "__disable" ? "not-allowed" : "pointer"};
+    props.className === "__disable" ? "not-allowed" : "pointer"};
   }
 `;
 

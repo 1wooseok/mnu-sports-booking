@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "../../hook/useNavigate";
 import { setPlace } from "../../utils/format";
 import "./complete.css";
 
