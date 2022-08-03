@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import styled from "styled-components";
 
 function Footer() {
@@ -10,11 +10,18 @@ function Footer() {
 }
 
 const Wrap = styled.div`
+  position: fixed;
+  left: 0;
   bottom: 0;
-  margin: 1em;
 
-  width: 90vw;
-  
+  width: 100vw;
+  height: 4rem;
+  max-width: 470px;
+  max-height: 70px;
+
+  margin: 0;
+
+  border-top: 1px solid whitesmoke;
 `;
 
 export default Footer;

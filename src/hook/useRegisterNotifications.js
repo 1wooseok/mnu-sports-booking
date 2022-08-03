@@ -1,12 +1,18 @@
 import { useEffect } from 'react';
 import { registerNotifications, addListeners } from "../apis/noti/PushNoti";
+import { isPlatform } from '@ionic/react';
 
 export default function useRegisterNotifications() {
-  let permissionStatus;
-  useEffect(() => {
-    // permissionStatus = registerNotifications();
-    addListeners();
-  })
-
-  return permissionStatus;
+  if (isPlatform('hybrid')) {
+    let permissionStatus;
+    useEffect(() => {
+      permissionStatus = registerNotifications();
+      if (permissionStatus === 'granted') {
+        addListeners();
+      }
+    })
+    return permissionStatus;
+  } else {
+    return null;
+  }
 }

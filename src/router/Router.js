@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route, Link } from "react-router-dom"
+import { BrowserRouter, Switch, Route } from "react-router-dom"
 
 // Layout
 import Header from "../components/layout/header";
@@ -7,16 +7,22 @@ import Footer from "../components/layout/footer";
 
 // User
 import CalendarContainer from "../components/calendar/CalendarContainer";
-import Facility from "../components/layout/facility";
+import Facility from '../components/layout/Facility';
 import ReserveForm from "../components/calendar/ReserveForm";
 
 // Admin
 import AdminLogin from "../components/new-admin/AdminLogin";
 import AdminContainer from "../components/new-admin/AdminContainer";
 
+import ModalContainer from '../components/modal/ModalContainer';
+import SocialLogin from "../components/login/SocialLogin";
+
 function Router() {
   return (
     <BrowserRouter>
+      <ModalContainer>
+        <SocialLogin />
+      </ModalContainer>
       <Header />
       <Switch>
         <Route exact path="/">
@@ -50,7 +56,4 @@ function Router() {
   );
 }
 
-function Home() {
-  return <h1>Home</h1>
-}
 export default Router;

@@ -1,99 +1,15 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import Logo from "../../components/modal/logo";
+import Logo from "../modal/logo";
 import styled from "styled-components";
-// import useRegisterNotifications from "../../hook/useRegisterNotifications";
-import { PushNotifications } from '@capacitor/push-notifications';
-
-const facilities = [
-  {
-    fno: 1,
-    name: "풋살장",
-    place: "공대 근처",
-    placeUrl: "www.naver.com",
-    maxHour: 2,
-  },
-  {
-    fno: 29,
-    name: "테니스장",
-    place: "공대 근처",
-    placeUrl: "www.naver.com",
-    maxHour: 2,
-  },
-  {
-    fno: 34,
-    name: "족구장",
-    place: "간호대 앞",
-    placeUrl: "www.adfsd.com",
-    maxHour: 2,
-  },
-  {
-    fno: 36,
-    name: "대운동장",
-    place: "editTest",
-    placeUrl: "editTest",
-    maxHour: 3,
-  },
-];
+import useRegisterNotifications from "../../hook/useRegisterNotifications";
 
 export default function Facility() {
-  // const permissionStatus = useRegisterNotifications();
-  /////////////////////
-  useEffect(() => {
-    PushNotifications.checkPermissions().then((res) => {
-      if (res.receive !== 'granted') {
-        PushNotifications.requestPermissions().then((res) => {
-          if (res.receive === 'denied') {
-            alert('Push Notification permission denied');
-          }
-          else {
-            alert('Push Notification permission granted');
-            register();
-          }
-        });
-      }
-      else {
-        register();
-      }
-    });
-  }, []);
-
-  const register = () => {
-    console.log('Initializing HomePage');
-
-    // Register with Apple / Google to receive push via APNS/FCM
-    PushNotifications.register();
-
-    // On success, we should be able to receive notifications
-    PushNotifications.addListener('registration',
-      (token) => {
-        alert("Device Registered : ", JSON.stringify(token));
-      }
-    );
-
-    // Some issue with our setup and push will not work
-    PushNotifications.addListener('registrationError',
-      (error) => {
-        alert('Error on registration: ' + JSON.stringify(error));
-      }
-    );
-
-    // Show us the notification payload if the app is open on our device
-    PushNotifications.addListener('pushNotificationReceived',
-      (notification) => {
-        alert('Received(foreground): ', JSON.stringify(notification));
-      }
-    );
-
-    // Method called when tapping on a notification
-    PushNotifications.addListener('pushNotificationActionPerformed',
-      (notification) => {
-        alert('Received(backGround): ', JSON.stringify(notification));
-      }
-    );
+  const permissionStatus = useRegisterNotifications();
+  if (permissionStatus) {
+    alert("Mobil env");
   }
 
-  ///////////////////
   return (
     <StAppContainer>
       <Logo />
@@ -147,3 +63,34 @@ const StAppLink = styled(Link)`
     }
   }
 `;
+
+var facilities = [
+  {
+    fno: 1,
+    name: "풋살장",
+    place: "공대 근처",
+    placeUrl: "www.naver.com",
+    maxHour: 2,
+  },
+  {
+    fno: 29,
+    name: "테니스장",
+    place: "공대 근처",
+    placeUrl: "www.naver.com",
+    maxHour: 2,
+  },
+  {
+    fno: 34,
+    name: "족구장",
+    place: "간호대 앞",
+    placeUrl: "www.adfsd.com",
+    maxHour: 2,
+  },
+  {
+    fno: 36,
+    name: "대운동장",
+    place: "editTest",
+    placeUrl: "editTest",
+    maxHour: 3,
+  },
+];
