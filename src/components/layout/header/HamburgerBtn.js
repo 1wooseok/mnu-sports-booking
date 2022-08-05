@@ -3,7 +3,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import { CgClose } from "react-icons/cg";
 import { HiOutlineMenu } from "react-icons/hi";
-import MyBookingContainer from "../myBooking/MyBookingContainer";
+import MyBookingContainer from "../../myBooking/MyBookingContainer";
 
 function HamburgerBtn() {
   const [myListVisibility, setMyListVisibility] = useState(false);

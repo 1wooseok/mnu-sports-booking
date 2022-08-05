@@ -1,12 +1,17 @@
 import React from "react";
 import styled from "styled-components";
+import { flexCenter } from "../../style/LayoutStyle";
 import { CgClose } from "react-icons/cg";
+import { KAKAO_AUTH_URL } from "../../kakao-api";
+import { useSetModal } from "../../context/modalContext";
 
 export default function SocialLogin() {
+  const setModal = useSetModal();
+
   return (
-    <Box>
+    <Wrap>
       <Header>
-        <CgClose />
+        <CgClose onClick={setModal} />
       </Header>
       <Content>
         <h2>
@@ -14,7 +19,9 @@ export default function SocialLogin() {
           팀원들을 모집해 보세요.
         </h2>
         <Ul>
-          <Kakao></Kakao>
+          <a href={KAKAO_AUTH_URL}>
+            <Kakao></Kakao>
+          </a>
           <Naver></Naver>
         </Ul>
         <p>
@@ -22,11 +29,11 @@ export default function SocialLogin() {
           <a>개인정보 처리방침</a>
         </p>
       </Content>
-    </Box>
+    </Wrap>
   );
 }
 
-const Box = styled.div`
+const Wrap = styled.div`
   position: fixed;
 
   top: 45%;
@@ -60,9 +67,7 @@ const Content = styled.div`
 `;
 
 const Ul = styled.ul`
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  ${flexCenter};
 `;
 
 const Kakao = styled.li`

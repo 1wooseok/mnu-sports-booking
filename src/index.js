@@ -1,16 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
-import "./index.css";
-
-// Context
-import { FetchContextProvider } from "./context/fetchContext";
 
 ReactDOM.render(
   <React.StrictMode>
-    <FetchContextProvider>
-      <App />
-    </FetchContextProvider>
+    <App />
   </React.StrictMode>,
   document.getElementById("root")
 );

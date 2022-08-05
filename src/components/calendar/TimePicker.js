@@ -13,6 +13,7 @@ import KakaoChannel from "../../apis/KakaoChannel";
 import ReserveBtn from "./ReserveBtn";
 import SurveyLink from "./SurvetLink";
 import styled from "styled-components";
+import { flexCenter } from "../../style/LayoutStyle";
 
 const openingTime = 8;
 const closingTime = 19;
@@ -135,20 +136,20 @@ function isReservedTime(reservedList, hour) {
 
 // ----- Style -----
 const StTimeContainer = styled.div`
-  display: flex;
-  justify-content: center;
+  ${flexCenter}
+
+  margin: 0.5rem 0;
+
   flex-flow: row wrap;
 `;
 
 const StTimeBtn = styled.div`
+  ${flexCenter}
+
   width: calc(100% / 5);
 
   border: 1px solid grey;
   border-radius: 5px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
 
   margin: 0.5em;
   padding: 0.1em 0 0.2em 0;

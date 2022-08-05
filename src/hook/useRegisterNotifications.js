@@ -5,14 +5,16 @@ import { isPlatform } from '@ionic/react';
 export default function useRegisterNotifications() {
   if (isPlatform('hybrid')) {
     let permissionStatus;
+
     useEffect(() => {
       permissionStatus = registerNotifications();
       if (permissionStatus === 'granted') {
         addListeners();
       }
     })
+
     return permissionStatus;
-  } else {
-    return null;
   }
+
+  return null;
 }

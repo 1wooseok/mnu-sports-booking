@@ -3,6 +3,7 @@ import { useDateState, useDateDispatch } from "../../context/dateContext";
 import { isPicked, isValid, isToday } from "../../utils/check";
 import { range, dateFormatter } from "../../utils/format";
 import styled from "styled-components";
+import { flexCenter } from "../../style/LayoutStyle";
 
 function DatePicker() {
   const dateState = useDateState();
@@ -40,11 +41,11 @@ function YoilList() {
 function Calendar({ dateState }) {
   const prevLast = new Date(dateState.viewYear, dateFormatter(dateState.viewMonth - 1), 0);
   const thisLast = new Date(dateState.viewYear, dateFormatter(dateState.viewMonth), 0);
-  
+
   const PLDate = prevLast.getDate();
-  const PLDay = prevLast.getDay(); 
+  const PLDay = prevLast.getDay();
   const TLDate = thisLast.getDate();
-  const TLDay = thisLast.getDay(); 
+  const TLDay = thisLast.getDay();
 
   const prevDates =
     PLDay === 6 ? [] : setDisable(range(PLDate - PLDay, PLDate));
@@ -104,24 +105,23 @@ const StUL = styled.ul`
 `;
 
 const StLI = styled.li`
-  box-sizing: border-box;
-  width: calc(100% / 7);
+  ${flexCenter}
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: calc(100% / 7);
   height: 2.3rem;
+
   border-radius: 5px;
 
   opacity: ${(props) => (props.className === "__disable" ? "0.2" : "1")};
+
   &:hover {
     cursor: ${(props) =>
-      props.className === "__disable" ? "not-allowed" : "pointer"};
+    props.className === "__disable" ? "not-allowed" : "pointer"};
   }
 `;
 
 const StHighLight = styled.span`
-  display: inline-block;
+  ${flexCenter}
 
   width: 25px;
   height: 25px;
@@ -129,9 +129,10 @@ const StHighLight = styled.span`
   border-radius: 50%;
 
   color: white;
+
   background-color: mediumseagreen;
 
-  transform: translateY(-5%);
+  transform: translateY(-13%);
   margin: 0.3rem 0 0 0.1rem;
 `;
 export default DatePicker;
