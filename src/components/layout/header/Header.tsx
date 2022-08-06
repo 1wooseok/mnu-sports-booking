@@ -1,44 +1,30 @@
-import React, { useState, useCallback } from "react";
+import React from "react";
 import styled from "styled-components";
 import { useSetModal } from "../../../context/modalContext";
+import { useLogin } from "../../../context/loginContext";
 import { flexCenter } from "../../../style/LayoutStyle";
 
-const PlaceMenu = ["풋살", "농구", "족구", "테니스"];
+interface HeaderProps {
+  children: React.ReactNode;
+}
 
-export default function Header() {
+export default function Header({ children }: HeaderProps) {
   const setModal = useSetModal();
-  const [active, setActive] = useState<number>(0);
-
-  const onClick = (idx: number) => {
-    if (idx === active) return;
-    setActive(idx);
-  };
+  const login = useLogin();
 
   return (
-    <>
-      <StHeader>
-        <h2>프로필</h2>
-        {/* <Ul>
-          {PlaceMenu.map((place, idx) => (
-            <Place
-              key={idx}
-              className={active === idx ? "active" : ""}
-              onClick={() => onClick(idx)}
-            >
-              {place}
-            </Place>
-          ))}
-        </Ul>
-        <LoginBtn onClick={setModal}>로그인</LoginBtn> */}
-      </StHeader>
-    </>
+    <StHeader>
+      {children}
+      {!login && <LoginBtn onClick={setModal}>로그인</LoginBtn>}
+    </StHeader>
   );
 }
 
 const StHeader = styled.header`
+  position: relative;
+
   ${flexCenter}
   justify-content: space-between;
-  position: relative;
 
   text-align: center;
 
@@ -49,37 +35,26 @@ const StHeader = styled.header`
 
   background: rgb(255, 255, 255);
   box-shadow: rgb(235 235 235) 0px -0.5px 0px 0px inset;
+
   h2 {
     width: 100%;
     font-size: 17px;
     font-weight: 500;
   }
+
+  svg {
+    width: 24px;
+    height: 24px;
+  }
 `;
 
 const LoginBtn = styled.button`
   ${flexCenter}
+  position: absolute;
+  right: 18px;
 
   border: 1px solid rgb(235, 235, 235);
 
   height: 44px;
   padding: 6px 20px;
-`;
-
-const Ul = styled.ul`
-  ${flexCenter};
-`;
-
-const Place = styled.li`
-  font-size: 18px;
-
-  font-weight: 600;
-
-  margin-left: 0.6rem;
-
-  color: ${(props) =>
-    props.className === "active" ? "black" : "rgb(191, 191, 191)"};
-
-  word-break: keep-all;
-
-  white-space: nowrap;
 `;

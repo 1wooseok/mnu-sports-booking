@@ -1,18 +1,18 @@
-import React, { createContext, useState, useContext, useMemo } from "react";
+import React, { createContext, useState, useContext, useCallback } from "react";
 
 interface ProviderProps {
   children: React.ReactNode;
 }
 
 const initialLoginState: boolean = false;
-let initialLoginAction: any;
+let initialLoginAction: any; // HACK
 
 const loginContext = createContext(initialLoginState);
 const loginActionContext = createContext(initialLoginAction);
 
 export function LoginContextProvider({ children }: ProviderProps) {
   const [state, setState] = useState<boolean>(false);
-  const actions = useMemo(() => setState((prev) => !prev), []);
+  const actions = useCallback(() => setState((prev) => !prev), []);
 
   return (
     <loginActionContext.Provider value={actions}>

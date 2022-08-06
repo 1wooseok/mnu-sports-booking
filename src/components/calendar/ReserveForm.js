@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import Complete from "../modal/complete";
-import { BiArrowBack } from "react-icons/bi";
+import BackButton from "../button/BackButton";
 import { postReserve } from "../../apis/api";
 import { BtnLoading } from "../modal/loading";
 import useInputChange from "../../hook/useInputs";
@@ -68,7 +68,7 @@ export default function Login() {
   return (
     <div>
       {completeMsg}
-      <BiArrowBack onClick={() => navigate("/booking/26")}></BiArrowBack>
+      <BackButton />
       <StContainer>
         <form onSubmit={handleSubmit}>
           <StInput

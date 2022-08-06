@@ -2,12 +2,10 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from "react-router-dom"
 
 // Layout
-import Header from "../components/layout/header/Header";
 import Footer from "../components/layout/footer/Footer";
 
-// User
-import CalendarContainer from "../components/calendar/CalendarContainer";
-import Facility from '../components/layout/Facility';
+// Booking
+import BookingPage from "../pages/BookingPage";
 import ReserveForm from "../components/calendar/ReserveForm";
 
 // Admin
@@ -20,7 +18,6 @@ import KakaoRedirectPage from '../pages/KakaoRedirectPage';
 // Trash
 import ModalContainer from '../components/modal/ModalContainer';
 import SocialLogin from "../components/login/SocialLogin";
-
 
 // Profile 
 import ProfilePage from "../pages/ProfilePage";
@@ -35,16 +32,13 @@ function Router() {
       <ModalContainer>
         <SocialLogin />
       </ModalContainer>
-      <Header />
+      {/* <Header /> */}
       <Switch>
-        <Route exact path="/">
-          <Facility />
-        </Route>
         <Route exact path="/reserve">
           <ReserveForm />
         </Route>
         <Route exact path="/booking/:fno">
-          <CalendarContainer />
+          <BookingPage />
         </Route>
         <Route exact path="/oauth/kakao/callback">
           <KakaoRedirectPage />

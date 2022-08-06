@@ -5,6 +5,7 @@ import { useNavigate } from "../hook/useNavigate";
 import { ImFileEmpty } from "react-icons/im";
 import { BsCalendarPlus } from "react-icons/bs";
 import { GoCommentDiscussion } from "react-icons/go";
+import Header from "../components/layout/header/Header";
 
 type SubMenuTableType = {
   [index: string]: string;
@@ -26,35 +27,40 @@ export default function ProfilePage() {
   }, []);
 
   return (
-    <Wrap>
-      <ProfileAvatar />
-      <h3>석우정</h3>
-      <h4>주포지션: 골키퍼</h4>
-      <a>프로필 수정하기</a>
-      <BtnWrap>
-        <IconButton
-          size="large"
-          icon={<ImFileEmpty />}
-          title="게시글"
-          onClick={() => onClick("게시글")}
-        />
-        <IconButton
-          size="large"
-          icon={<GoCommentDiscussion />}
-          title="댓글"
-          onClick={() => onClick("댓글")}
-        />
-        <IconButton
-          size="large"
-          icon={<BsCalendarPlus />}
-          title="내예약"
-          onClick={() => onClick("내예약")}
-        />
-      </BtnWrap>
-      <ul>
-        <li>이용약관 &gt;</li>
-      </ul>
-    </Wrap>
+    <>
+      <Header>
+        <h2>프로필</h2>
+      </Header>
+      <Wrap>
+        <ProfileAvatar />
+        <h3>석우정</h3>
+        <h4>주포지션: 골키퍼</h4>
+        <a>프로필 수정하기</a>
+        <BtnWrap>
+          <IconButton
+            size="large"
+            icon={<ImFileEmpty />}
+            title="게시글"
+            onClick={() => onClick("게시글")}
+          />
+          <IconButton
+            size="large"
+            icon={<GoCommentDiscussion />}
+            title="댓글"
+            onClick={() => onClick("댓글")}
+          />
+          <IconButton
+            size="large"
+            icon={<BsCalendarPlus />}
+            title="내예약"
+            onClick={() => onClick("내예약")}
+          />
+        </BtnWrap>
+        <ul>
+          <li>이용약관 &gt;</li>
+        </ul>
+      </Wrap>
+    </>
   );
 }
 
