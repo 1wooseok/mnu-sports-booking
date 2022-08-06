@@ -16,7 +16,7 @@ export function ModalContextProvider({ children }: ProviderProps) {
 
   return (
     <modalActionContext.Provider value={actions}>
-      <modalContext.Provider value={state}>{children}</modalContext.Provider>;
+      <modalContext.Provider value={state}>{children}</modalContext.Provider>
     </modalActionContext.Provider>
   );
 }

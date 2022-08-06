@@ -16,7 +16,7 @@ export function LoginContextProvider({ children }: ProviderProps) {
 
   return (
     <loginActionContext.Provider value={actions}>
-      <loginContext.Provider value={state}>{children}</loginContext.Provider>;
+      <loginContext.Provider value={state}>{children}</loginContext.Provider>
     </loginActionContext.Provider>
   );
 }

@@ -18,7 +18,7 @@ const SubMenuTable: SubMenuTableType = {
 
 type SUBMENUS = typeof SubMenuTable[keyof typeof SubMenuTable];
 
-export default function Profile() {
+export default function ProfilePage() {
   const navigate = useNavigate();
 
   const onClick = useCallback((title: SUBMENUS) => {

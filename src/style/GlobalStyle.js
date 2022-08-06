@@ -1,9 +1,10 @@
 import { createGlobalStyle } from "styled-components";
-import { flexCenter } from "./LayoutStyle";
 
 const GlobalStyle = createGlobalStyle`
-  * { box-sizing: border-box; }
-  
+  * { box-sizing: border-box; -ms-overflow-style: none; }
+ 
+::-webkit-scrollbar { display: none; }
+
   html, body, p { margin: 0; }
 
   html { hegiht: 100vh; overflow: hidden; }
@@ -14,9 +15,9 @@ const GlobalStyle = createGlobalStyle`
 
   a { color: black; cursor: pointer; text-decoration: none;}
 
-  div { border-radius: 2px; }
+  div, img { border-radius: 2px; }
   
-  button { border-radius: 2px; cursor: pointer; }
+  button { border-radius: 2px; cursor: pointer; background-color: rgb(255, 255, 255);}
 
   input:focus, select:focus, textarea:focus { outline-color: mediumseagreen; }
 `;

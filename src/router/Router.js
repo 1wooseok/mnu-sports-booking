@@ -21,8 +21,13 @@ import KakaoRedirectPage from '../pages/KakaoRedirectPage';
 import ModalContainer from '../components/modal/ModalContainer';
 import SocialLogin from "../components/login/SocialLogin";
 
+
 // Profile 
-import Profile from "../pages/Profile";
+import ProfilePage from "../pages/ProfilePage";
+
+// Commnuity
+import CommunityPage from "../pages/CommunityPage";
+import PostPage from "../pages/PostPage";
 
 function Router() {
   return (
@@ -44,8 +49,14 @@ function Router() {
         <Route exact path="/oauth/kakao/callback">
           <KakaoRedirectPage />
         </Route>
+        <Route exact path="/community">
+          <CommunityPage />
+        </Route>
+        <Route exact path="/community/:postId">
+          <PostPage />
+        </Route>
         <Route exact path="/profile">
-          <Profile />
+          <ProfilePage />
         </Route>
         {/* New Admin */}
         <Route exact path="admin">
