@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Card from "../components/card/Card";
 import { CardList } from "../style/LayoutStyle";
 import Header from "../components/layout/header/Header";
-import CommunityHeader from "../../src/components/community/CommunityHeader";
+import CommunityHeader from "../components/community/CommunityHeader";
 
 import axios from "axios";
 

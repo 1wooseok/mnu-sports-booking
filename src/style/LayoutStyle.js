@@ -29,6 +29,6 @@ export const StHeader = styled.header`
 `;
 
 export const CardList = styled.ul`
-  height: 82vh;
+  height: calc(100vh - 120px);
   overflow: auto;
 `;
