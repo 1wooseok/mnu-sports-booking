@@ -6,6 +6,7 @@ export interface IconButtonProps {
   icon: React.ReactElement;
   title: string;
   onClick?: () => void;
+  currentTab?: string;
 }
 
 export default function IconButton({
@@ -13,10 +14,11 @@ export default function IconButton({
   size,
   icon,
   onClick,
+  currentTab,
 }: IconButtonProps) {
   return (
     <IconWrap className={size} onClick={onClick}>
-      <div>{icon}</div>
+      <Icon className={currentTab === title ? "curr" : ""}>{icon}</Icon>
       <span>{title}</span>
     </IconWrap>
   );
@@ -24,17 +26,19 @@ export default function IconButton({
 
 const IconWrap = styled.li`
   text-align: center;
-
-    svg {
-      margin: 0 auto;
-      color: "rgb(153, 153, 153)";
-      width: ${(props) => (props.className === "large" ? "28px" : "20px")};
-      height: ${(props) => (props.className === "large" ? "28px" : "20px")};
-    }
-    
-    span {
-      display: block;
-      font-size: ${(props) => (props.className === "large" ? "14px" : "10px")};
-    }
+  svg {
+    margin: 0 auto;
+    width: ${(props) => (props.className === "large" ? "28px" : "20px")};
+    height: ${(props) => (props.className === "large" ? "28px" : "20px")};
   }
+
+  span {
+    display: block;
+    font-size: ${(props) => (props.className === "large" ? "14px" : "10px")};
+  }
+`;
+
+const Icon = styled.div`
+  color: ${(props) =>
+    props.className === "curr" ? "black" : "rgb(153, 153, 153)"};
 `;

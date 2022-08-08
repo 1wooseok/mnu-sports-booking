@@ -24,11 +24,13 @@ type MENUS = typeof MenuTable[keyof typeof MenuTable];
 
 function Footer() {
   const navigate = useNavigate();
+  const [currentTab, setCurrentTab] = useState<string>("예약");
 
   const onClick = useCallback(
     (title: MENUS, loginRequired: boolean = false) => {
       if (loginRequired) {
       }
+      setCurrentTab(title);
       navigate(MenuTable[title]);
     },
     []
@@ -42,24 +44,28 @@ function Footer() {
           size="small"
           icon={<BsCalendarDate />}
           onClick={() => onClick("예약")}
+          currentTab={currentTab}
         />
         <IconButton
           title="커뮤니티"
           size="small"
           icon={<IoChatboxOutline />}
           onClick={() => onClick("커뮤니티")}
+          currentTab={currentTab}
         />
         <IconButton
           title="밴드"
           size="small"
           icon={<MdAttachFile />}
           onClick={() => onClick("밴드")}
+          currentTab={currentTab}
         />
         <IconButton
           title="프로필"
           size="small"
           icon={<AiOutlineUser />}
           onClick={() => onClick("프로필")}
+          currentTab={currentTab}
         />
       </MenuList>
     </Wrap>
