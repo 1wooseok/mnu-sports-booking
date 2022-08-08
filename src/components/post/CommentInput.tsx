@@ -58,7 +58,7 @@ const TextArea = styled.textarea`
 
   font-size: 14px;
 
-  padding: 5px 35px 5px 15px;
+  padding: 7px 35px 5px 15px;
 
   border-radius: 15px;
 
@@ -69,8 +69,8 @@ const Submit = styled.button`
   ${flexCenter}
 
   position: absolute;
-  bottom: 0.55em;
-  right: 0.3em;
+  bottom: 0.6em;
+  right: 0.7em;
 
   background-color: rgb(245, 246, 247);
 

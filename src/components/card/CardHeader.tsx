@@ -2,17 +2,21 @@ import React from "react";
 import styled from "styled-components";
 
 interface CardHeaderProps {
-  avatar: string;
+  avatar?: string;
   userName: string;
   date: string;
 }
 
-export default function CardHeader() {
+export default function CardHeader({
+  avatar,
+  userName,
+  date,
+}: CardHeaderProps) {
   return (
     <Wrap>
-      <UserAvatar />
-      <UserName>석우정</UserName>
-      <PostDate>2022년 08월 5일</PostDate>
+      <UserAvatar></UserAvatar>
+      <UserName>{userName}</UserName>
+      <PostDate>{date}</PostDate>
     </Wrap>
   );
 }

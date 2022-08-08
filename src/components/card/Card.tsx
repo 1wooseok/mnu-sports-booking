@@ -3,31 +3,25 @@ import styled from "styled-components";
 import CardHeader from "./CardHeader";
 import CardBody from "./CardBody";
 import CardFooter from "./CardFooter";
-import { useNavigate } from "../../hook/useNavigate";
+import { Link } from "react-router-dom";
 
-interface CardProps {
-  postId: number;
-  avatar: string;
-  userName: string;
-  date: string;
-  title: string;
-  content: string;
-  image: string;
-  commentCount: number;
-}
-
-export default function Card() {
-  const navigate = useNavigate();
-
-  const onClick = () => {
-    navigate("/community/postId");
-  };
-
+// 이해가 안됨.
+export default function Card({ post }: any) {
   return (
-    <Wrap onClick={onClick}>
-      <CardHeader />
-      <CardBody />
-      <CardFooter />
+    <Wrap>
+      <Link to={`/community/${post.postId}`}>
+        <CardHeader
+          userName={post.userName}
+          date={post.date}
+          avatar={post.avatar}
+        />
+        <CardBody
+          title={post.title}
+          content={post.content}
+          image={post.image}
+        />
+        <CardFooter commentCount={post.commentCount} />
+      </Link>
     </Wrap>
   );
 }

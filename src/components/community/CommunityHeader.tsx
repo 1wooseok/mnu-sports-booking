@@ -1,10 +1,8 @@
 import React, { useState, useCallback } from "react";
 import styled from "styled-components";
 import { flexCenter } from "../../style/LayoutStyle";
-import { IoIosArrowDown } from "react-icons/io";
-import { GoPrimitiveDot } from "react-icons/go";
 
-const PlaceMenu = ["풋살", "농구", "족구", "테니스"];
+const PlaceMenu = ["전체", "풋살", "농구", "족구", "테니스"];
 
 export default function CommunityHeader() {
   const [active, setActive] = useState<number>(0);
@@ -18,9 +16,6 @@ export default function CommunityHeader() {
 
   return (
     <Wrap>
-      <Deco>
-        <GoPrimitiveDot />
-      </Deco>
       <Ul>
         {PlaceMenu.map((place, idx) => (
           <Place
@@ -50,11 +45,13 @@ const Ul = styled.ul`
 `;
 
 const Place = styled.li`
-  font-size: 18px;
+  font-size: 16px;
 
   font-weight: 600;
 
   margin-left: 0.6rem;
+  margin-right: 8px;
+  padding-bottom: 2px;
 
   color: ${(props) =>
     props.className === "active" ? "black" : "rgb(191, 191, 191)"};
@@ -62,17 +59,7 @@ const Place = styled.li`
   word-break: keep-all;
 
   white-space: nowrap;
+
+  border-bottom: ${(props) =>
+    props.className === "active" ? "3px solid black" : "none"};
 `;
-
-const Deco = styled.div`
-  ${flexCenter};
-  border-radius: 5px;
-
-  svg {
-    width: 12px;
-    height: 12px;
-    color: black;
-  }
-`;
-
-// background-color: mediumseagreen;

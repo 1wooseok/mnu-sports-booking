@@ -1,17 +1,18 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function CardBody() {
+interface CardBodyProps {
+  title: string;
+  content: string;
+  image?: string;
+}
+
+export default function CardBody({ title, content, image }: CardBodyProps) {
   return (
     <Wrap>
       <Main>
-        <Title>15 - 17시 풋살할분~!!!!!!!!!!!!</Title>
-        <Content>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Similique,
-          repudiandae delectus. Esse fugiat ducimus inventore aliquam deleniti
-          dolorem odit porro dolor, nam culpa, accusantium eveniet distinctio
-          placeat atque, vitae architecto!
-        </Content>
+        <Title>{title}</Title>
+        <Content>{content}</Content>
       </Main>
       <Img />
     </Wrap>
@@ -39,7 +40,7 @@ const Title = styled.p`
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
 `;
 
@@ -51,7 +52,7 @@ const Content = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 `;
 

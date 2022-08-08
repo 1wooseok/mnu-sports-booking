@@ -2,12 +2,16 @@ import React from "react";
 import styled from "styled-components";
 import { GoCommentDiscussion } from "react-icons/go";
 
-export default function CardFooter() {
+interface CardFooterProps {
+  commentCount: number;
+}
+
+export default function CardFooter({ commentCount }: CardFooterProps) {
   return (
     <Wrap>
       <Button>
         <GoCommentDiscussion />
-        <Count>2</Count>
+        <Count>{commentCount}</Count>
       </Button>
     </Wrap>
   );
