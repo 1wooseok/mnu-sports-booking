@@ -23,7 +23,8 @@ export default function ProfilePage() {
   const navigate = useNavigate();
 
   const onClick = useCallback((title: SUBMENUS) => {
-    navigate(SubMenuTable[title]);
+    // SubMenuTable[title];
+    navigate("/profile/activity");
   }, []);
 
   return (
@@ -56,9 +57,6 @@ export default function ProfilePage() {
             onClick={() => onClick("내예약")}
           />
         </BtnWrap>
-        <ul>
-          <li>이용약관 &gt;</li>
-        </ul>
       </Wrap>
     </>
   );

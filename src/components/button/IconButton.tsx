@@ -9,9 +9,9 @@ export interface IconButtonProps {
 }
 
 export default function IconButton({
+  title,
   size,
   icon,
-  title,
   onClick,
 }: IconButtonProps) {
   return (
@@ -27,11 +27,11 @@ const IconWrap = styled.li`
 
     svg {
       margin: 0 auto;
-      color: rgb(102, 102, 102);
+      color: "rgb(153, 153, 153)";
       width: ${(props) => (props.className === "large" ? "28px" : "20px")};
       height: ${(props) => (props.className === "large" ? "28px" : "20px")};
     }
-
+    
     span {
       display: block;
       font-size: ${(props) => (props.className === "large" ? "14px" : "10px")};

@@ -9,10 +9,6 @@ export default function Comment() {
         <CommentItem />
         <CommentItem />
         <CommentItem />
-        <CommentItem />
-        <CommentItem />
-
-        <CommentItem />
       </List>
     </Wrap>
   );
@@ -25,7 +21,11 @@ function CommentItem() {
       <div>
         <Name>통키</Name>
         <Content>허허허</Content>
-        <Date>8월 11일</Date>
+        <Date>
+          <span>8월 11일</span>
+          <Text>답글</Text>
+          <Text>삭제</Text>
+        </Date>
       </div>
     </ListItem>
   );
@@ -89,4 +89,13 @@ const Date = styled.div`
   font-size: 13px;
   color: rgb(153, 153, 153);
   line-height: normal;
+`;
+
+const Text = styled.span`
+  margin-left: 10px;
+  font-size: 13px;
+  color: rgb(102, 102, 102);
+  font-weight: 500;
+  line-height: normal;
+  cursor: pointer;
 `;

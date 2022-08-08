@@ -15,7 +15,7 @@ export default function Header({ children }: HeaderProps) {
   return (
     <StHeader>
       {children}
-      {!login && <LoginBtn onClick={setModal}>로그인</LoginBtn>}
+      {/* {!login && <LoginBtn onClick={setModal}>로그인</LoginBtn>} */}
     </StHeader>
   );
 }

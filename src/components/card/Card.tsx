@@ -20,7 +20,7 @@ export default function Card() {
   const navigate = useNavigate();
 
   const onClick = () => {
-    navigate("community/postId");
+    navigate("/community/postId");
   };
 
   return (

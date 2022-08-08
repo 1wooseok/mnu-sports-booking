@@ -1,8 +1,8 @@
 import React, { useState, useCallback } from "react";
 import styled from "styled-components";
 import { flexCenter } from "../../style/LayoutStyle";
-import { BsArrowRightSquareFill } from "react-icons/bs";
 import { IoIosArrowDown } from "react-icons/io";
+import { GoPrimitiveDot } from "react-icons/go";
 
 const PlaceMenu = ["풋살", "농구", "족구", "테니스"];
 
@@ -19,7 +19,7 @@ export default function CommunityHeader() {
   return (
     <Wrap>
       <Deco>
-        <IoIosArrowDown />
+        <GoPrimitiveDot />
       </Deco>
       <Ul>
         {PlaceMenu.map((place, idx) => (
@@ -66,8 +66,13 @@ const Place = styled.li`
 
 const Deco = styled.div`
   ${flexCenter};
-  width: 16px;
-  height: 16px;
   border-radius: 5px;
-  background-color: mediumseagreen;
+
+  svg {
+    width: 12px;
+    height: 12px;
+    color: black;
+  }
 `;
+
+// background-color: mediumseagreen;

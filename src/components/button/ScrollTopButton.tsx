@@ -4,12 +4,17 @@ import { FiArrowUp } from "react-icons/fi";
 import { flexCenter } from "../../style/LayoutStyle";
 
 export default function ScrollTopButton() {
-  const scrollTop = () => {
-    window.scrollTo(0, 0);
+  const handleScroll = () => {
+    if (!window.scrollY) return;
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   };
 
   return (
-    <Wrap onClick={scrollTop}>
+    <Wrap onClick={handleScroll}>
       <FiArrowUp />
     </Wrap>
   );

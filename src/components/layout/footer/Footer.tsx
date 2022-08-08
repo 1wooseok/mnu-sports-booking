@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useState, useCallback } from "react";
 import styled from "styled-components";
 import { BsCalendarDate } from "react-icons/bs";
 import { AiOutlineUser } from "react-icons/ai";
@@ -40,26 +40,26 @@ function Footer() {
         <IconButton
           title="예약"
           size="small"
-          onClick={() => onClick("예약")}
           icon={<BsCalendarDate />}
+          onClick={() => onClick("예약")}
         />
         <IconButton
           title="커뮤니티"
           size="small"
-          onClick={() => onClick("커뮤니티")}
           icon={<IoChatboxOutline />}
+          onClick={() => onClick("커뮤니티")}
         />
         <IconButton
           title="밴드"
           size="small"
-          onClick={() => onClick("밴드")}
           icon={<MdAttachFile />}
+          onClick={() => onClick("밴드")}
         />
         <IconButton
           title="프로필"
           size="small"
-          onClick={() => onClick("프로필")}
           icon={<AiOutlineUser />}
+          onClick={() => onClick("프로필")}
         />
       </MenuList>
     </Wrap>

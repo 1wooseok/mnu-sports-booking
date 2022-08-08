@@ -19,12 +19,19 @@ import KakaoRedirectPage from '../pages/KakaoRedirectPage';
 import ModalContainer from '../components/modal/ModalContainer';
 import SocialLogin from "../components/login/SocialLogin";
 
-// Profile 
-import ProfilePage from "../pages/ProfilePage";
 
 // Commnuity
 import CommunityPage from "../pages/CommunityPage";
 import PostPage from "../pages/PostPage";
+
+// Actuvuty
+import ActivityPage from "../pages/ActivityPage";
+
+// Profile 
+import ProfilePage from "../pages/ProfilePage";
+
+// Band
+import BandPage from "../pages/BandPage";
 
 function Router() {
   return (
@@ -49,9 +56,16 @@ function Router() {
         <Route exact path="/community/:postId">
           <PostPage />
         </Route>
+        <Route exact path="/band">
+          <BandPage />
+        </Route>
         <Route exact path="/profile">
           <ProfilePage />
         </Route>
+        <Route exact path="/profile/activity">
+          <ActivityPage />
+        </Route>
+
         {/* New Admin */}
         <Route exact path="admin">
           <AdminLogin />

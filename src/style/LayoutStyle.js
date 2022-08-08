@@ -27,3 +27,8 @@ export const StHeader = styled.header`
     font-weight: 500;
   }
 `;
+
+export const CardList = styled.ul`
+  height: 82vh;
+  overflow: auto;
+`;

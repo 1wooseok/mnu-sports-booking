@@ -6,7 +6,7 @@ import PostContent from "../components/post/PostContent";
 import PostFooter from "../components/post/PostFooter";
 import Comment from "../components/post/Comment";
 import CommentInput from "../components/post/CommentInput";
-import ScrollTopButton from "../components/button/ScrollTopButton";
+// import ScrollTopButton from "../components/button/ScrollTopButton";
 
 export default function PostPage() {
   return (
@@ -16,7 +16,8 @@ export default function PostPage() {
       <PostContent />
       <PostFooter />
       <Comment />
-      <ScrollTopButton />
+      <CommentInput />
+      {/* <ScrollTopButton /> */}
     </Wrap>
   );
 }

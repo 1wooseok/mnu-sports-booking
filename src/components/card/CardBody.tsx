@@ -33,7 +33,7 @@ const Main = styled.div`
 
 const Title = styled.p`
   font-size: 17px;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 24px;
   color: rgb(31, 31, 31);
   overflow: hidden;

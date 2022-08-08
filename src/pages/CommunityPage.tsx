@@ -1,6 +1,6 @@
 import React from "react";
-import styled from "styled-components";
 import Card from "../components/card/Card";
+import { CardList } from "../style/LayoutStyle";
 import Header from "../components/layout/header/Header";
 import CommunityHeader from "../../src/components/community/CommunityHeader";
 
@@ -21,8 +21,3 @@ export default function CommunityPage() {
     </>
   );
 }
-
-const CardList = styled.ul`
-  height: 82vh;
-  overflow: auto;
-`;
