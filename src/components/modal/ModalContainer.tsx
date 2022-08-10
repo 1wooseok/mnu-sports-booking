@@ -3,11 +3,7 @@ import styled from "styled-components";
 import { useModal, useSetModal } from "../../context/modalContext";
 import { flexCenter } from "../../style/LayoutStyle";
 
-type Props = {
-  children: React.ReactElement;
-};
-
-export default function ModalContainer({ children }: Props) {
+export default function ModalContainer() {
   const modal = useModal();
   const setModal = useSetModal();
 
@@ -15,8 +11,8 @@ export default function ModalContainer({ children }: Props) {
 
   return (
     <>
-      <ModalBg onClick={setModal} />
-      {children}
+      <ModalBg onClick={() => setModal(null)} />
+      {modal}
     </>
   );
 }

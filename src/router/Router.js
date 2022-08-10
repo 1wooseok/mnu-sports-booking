@@ -19,7 +19,6 @@ import KakaoRedirectPage from '../pages/KakaoRedirectPage';
 import ModalContainer from '../components/modal/ModalContainer';
 import SocialLogin from "../components/login/SocialLogin";
 
-
 // Commnuity
 import CommunityPage from "../pages/CommunityPage";
 import PostPage from "../pages/PostPage";
@@ -33,16 +32,10 @@ import ProfilePage from "../pages/ProfilePage";
 // Band
 import BandPage from "../pages/BandPage";
 
-// Modal
-import YesOrNo from '../components/modal/YesOrNo';
-
 function Router() {
   return (
     <BrowserRouter>
-      <ModalContainer>
-        <YesOrNo />
-        {/* <SocialLogin /> */}
-      </ModalContainer>
+      <ModalContainer />
       {/* <Header /> */}
       <Switch>
         <Route exact path="/reserve">

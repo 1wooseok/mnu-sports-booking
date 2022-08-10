@@ -1,22 +1,31 @@
-import React, { createContext, useState, useContext, useCallback } from "react";
+import React, {
+  createContext,
+  useState,
+  useContext,
+  useCallback,
+  ReactNode,
+} from "react";
 
 interface ProviderProps {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
-const initialModalState: boolean = false;
-let initialModalAction: any = () => {};
+const initialModalState: any = undefined;
+let initialModalAction: any = undefined;
 
 const modalContext = createContext(initialModalState);
 const modalActionContext = createContext(initialModalAction);
 
 export function ModalContextProvider({ children }: ProviderProps) {
-  const [state, setState] = useState<boolean>(true);
-  const actions = useCallback(() => setState((prev) => !prev), []);
+  const [modal, setModal] = useState<ReactNode | null>(null);
+  const actions = useCallback((curr: ReactNode) => setModal(curr), []);
 
   return (
     <modalActionContext.Provider value={actions}>
-      <modalContext.Provider value={state}>{children}</modalContext.Provider>
+      <modalContext.Provider value={modal}>
+        {children}
+        {modal}
+      </modalContext.Provider>
     </modalActionContext.Provider>
   );
 }

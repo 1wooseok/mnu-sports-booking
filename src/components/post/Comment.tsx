@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useSetModal } from "../../context/modalContext";
+import YesOrNo from "../modal/YesOrNo";
 
 export default function Comment() {
   return (
@@ -27,7 +28,7 @@ function CommentItem() {
         <Date>
           <span>8월 11일</span>
           <Text>답글</Text>
-          <Text onClick={() => setModal(true)}>삭제</Text>
+          <Text onClick={() => setModal(<YesOrNo />)}>삭제</Text>
         </Date>
       </div>
     </ListItem>
