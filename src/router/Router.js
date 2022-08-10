@@ -33,11 +33,15 @@ import ProfilePage from "../pages/ProfilePage";
 // Band
 import BandPage from "../pages/BandPage";
 
+// Modal
+import YesOrNo from '../components/modal/YesOrNo';
+
 function Router() {
   return (
     <BrowserRouter>
       <ModalContainer>
-        <SocialLogin />
+        <YesOrNo />
+        {/* <SocialLogin /> */}
       </ModalContainer>
       {/* <Header /> */}
       <Switch>

@@ -16,7 +16,6 @@ export default function PostPage() {
       <PostFooter />
       <Comment />
       <CommentInput />
-      {/* <ScrollTopButton /> */}
     </Wrap>
   );
 }

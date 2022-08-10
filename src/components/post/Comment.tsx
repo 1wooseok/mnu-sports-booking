@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { useSetModal } from "../../context/modalContext";
 
 export default function Comment() {
   return (
@@ -15,6 +16,8 @@ export default function Comment() {
 }
 
 function CommentItem() {
+  const setModal = useSetModal();
+
   return (
     <ListItem>
       <Avatar />
@@ -24,7 +27,7 @@ function CommentItem() {
         <Date>
           <span>8월 11일</span>
           <Text>답글</Text>
-          <Text>삭제</Text>
+          <Text onClick={() => setModal(true)}>삭제</Text>
         </Date>
       </div>
     </ListItem>

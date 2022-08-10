@@ -11,7 +11,7 @@ const modalContext = createContext(initialModalState);
 const modalActionContext = createContext(initialModalAction);
 
 export function ModalContextProvider({ children }: ProviderProps) {
-  const [state, setState] = useState<boolean>(false);
+  const [state, setState] = useState<boolean>(true);
   const actions = useCallback(() => setState((prev) => !prev), []);
 
   return (
