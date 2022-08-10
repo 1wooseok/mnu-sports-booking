@@ -11,7 +11,6 @@ import { TimePickerLoader } from "../modal/loading";
 import { getReservedTime } from "../../apis/api";
 import KakaoChannel from "../../apis/KakaoChannel";
 import ReserveBtn from "./ReserveBtn";
-import SurveyLink from "./SurvetLink";
 import styled from "styled-components";
 import { flexCenter } from "../../style/LayoutStyle";
 
@@ -75,17 +74,10 @@ function TimePicker() {
           </StTimeBtn>
         );
       })}
-      <StCalendarFooter>
-        <StKakaoWrap>
-          <KakaoChannel />
-        </StKakaoWrap>
-        <StReserveWrap>
-          <ReserveBtn fno={fno} userPick={userPick} dateState={dateState} />
-        </StReserveWrap>
-        <StSurveyWrap>
-          <SurveyLink />
-        </StSurveyWrap>
-      </StCalendarFooter>
+      <StKakaoWrap>
+        <KakaoChannel />
+      </StKakaoWrap>
+      <ReserveBtn fno={fno} userPick={userPick} dateState={dateState} />
       {!reservedTime && <TimePickerLoader />}
     </StTimeContainer>
   );
@@ -147,7 +139,8 @@ function isReservedTime(reservedList, hour) {
 // ----- Style -----
 const StTimeContainer = styled.div`
   ${flexCenter}
-
+  position: relative;
+  
   margin: 0.5rem 0;
 
   flex-flow: row wrap;
@@ -184,24 +177,11 @@ const StTimeBtn = styled.div`
   }
 `;
 
-const StCalendarFooter = styled.div`
-  width: 100%;
-  display: flex;
-  ${"" /* justify-content: space-around; */}
-  align-items: end;
-`;
-
 const StKakaoWrap = styled.div`
-  flex: 1.5;
-  line-height: 0.1em;
-
-`;
-const StReserveWrap = styled.div`
-  flex: 2;
-
-`;
-const StSurveyWrap = styled.div`
-  flex: 1.5;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 3;
 `;
 
 export default React.memo(TimePicker);

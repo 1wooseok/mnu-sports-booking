@@ -5,13 +5,13 @@ import { CgClose } from "react-icons/cg";
 import { KAKAO_AUTH_URL } from "../../kakao-api";
 import { useSetModal } from "../../context/modalContext";
 
-export default function SocialLogin() {
+export default function LoginModal() {
   const setModal = useSetModal();
 
   return (
     <Wrap>
       <Header>
-        <CgClose onClick={setModal} />
+        <CgClose onClick={() => setModal(null)} />
       </Header>
       <Content>
         <h2>
@@ -36,13 +36,13 @@ export default function SocialLogin() {
 const Wrap = styled.div`
   position: fixed;
 
-  top: 45%;
-  left: 45%;
+  top: 50%;
+  left: 50%;
 
-  width: 400px;
-  height: 280px;
+  width: 350px;
+  height: 300px;
 
-  transform: translateX(-30%) translateY(-30%);
+  transform: translateX(-50%) translateY(-50%);
 
   overflow: hidden;
 

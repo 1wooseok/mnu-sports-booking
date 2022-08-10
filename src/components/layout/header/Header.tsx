@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useSetModal } from "../../../context/modalContext";
 import { useLogin } from "../../../context/loginContext";
 import { flexCenter } from "../../../style/LayoutStyle";
+import LoginButton from "../../button/LoginButton";
 
 interface HeaderProps {
   children: React.ReactNode;
@@ -15,7 +16,7 @@ export default function Header({ children }: HeaderProps) {
   return (
     <StHeader>
       {children}
-      {/* {!login && <LoginBtn onClick={setModal}>로그인</LoginBtn>} */}
+      <LoginButton />
     </StHeader>
   );
 }
@@ -46,15 +47,4 @@ const StHeader = styled.header`
     width: 24px;
     height: 24px;
   }
-`;
-
-const LoginBtn = styled.button`
-  ${flexCenter}
-  position: absolute;
-  right: 18px;
-
-  border: 1px solid rgb(235, 235, 235);
-
-  height: 44px;
-  padding: 6px 20px;
 `;

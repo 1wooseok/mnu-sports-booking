@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { Tag } from "../../style/CommonStyle";
 
 export default function PostContent() {
-  console.log("게시글 메인");
   const images = [];
   return (
     <Wrap>

@@ -5,7 +5,7 @@ import { range, dateFormatter } from "../../utils/format";
 import styled from "styled-components";
 import { flexCenter } from "../../style/LayoutStyle";
 
-function DatePicker() {
+export default function DatePicker() {
   const dateState = useDateState();
   const dateDispatch = useDateDispatch();
 
@@ -135,4 +135,4 @@ const StHighLight = styled.span`
   transform: translateY(-13%);
   margin: 0.3rem 0 0 0.1rem;
 `;
-export default DatePicker;
+

@@ -3,23 +3,11 @@ import Card from "../components/card/Card";
 import { CardList } from "../style/LayoutStyle";
 import Header from "../components/layout/header/Header";
 import CommunityHeader from "../components/community/CommunityHeader";
-
+import CommunityCardModel from "../types/Community";
 import axios from "axios";
 
-export interface CardProps {
-  postId: number;
-  avatar?: string;
-  userName: string;
-  date: string;
-  title: string;
-  content: string;
-  image: string;
-  commentCount: number;
-  category: string;
-}
-
 export default function CommunityPage() {
-  const [posts, setPosts] = useState<CardProps[] | null>(null);
+  const [posts, setPosts] = useState<CommunityCardModel[] | null>(null);
 
   useEffect(() => {
     (async () => {

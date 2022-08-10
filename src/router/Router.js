@@ -17,7 +17,6 @@ import KakaoRedirectPage from '../pages/KakaoRedirectPage';
 
 // Trash
 import ModalContainer from '../components/modal/ModalContainer';
-import SocialLogin from "../components/login/SocialLogin";
 
 // Commnuity
 import CommunityPage from "../pages/CommunityPage";

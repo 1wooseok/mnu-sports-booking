@@ -36,7 +36,7 @@ export default function ProfilePage() {
         <ProfileAvatar />
         <h3>석우정</h3>
         <h4>주포지션: 골키퍼</h4>
-        <a>프로필 수정하기</a>
+        <Edit>프로필 수정하기</Edit>
         <BtnWrap>
           <IconButton
             size="large"
@@ -57,6 +57,12 @@ export default function ProfilePage() {
             onClick={() => onClick("내예약")}
           />
         </BtnWrap>
+        <UtilList>
+          <UtilItem>
+            <a href="https://naver.me/FIp9ILfg">피드백 남기러가기</a>
+          </UtilItem>
+          <UtilItem className="logout">로그아웃</UtilItem>
+        </UtilList>
       </Wrap>
     </>
   );
@@ -70,16 +76,6 @@ const Wrap = styled.div`
   text-align: center;
 
   background-color: white;
-
-  a {
-    display: inline-block;
-
-    padding: 12px 28px;
-    margin: 12px 0px 0px;
-
-    font-size: 15px;
-    color: mediumseagreen;
-  }
 
   h3 {
     margin: 12px 0px 0px;
@@ -109,6 +105,16 @@ const ProfileAvatar = styled.div`
   background-color: skyblue;
 `;
 
+const Edit = styled.a`
+  display: inline-block;
+
+  padding: 12px 28px;
+  margin: 12px 0px 0px;
+
+  font-size: 15px;
+  color: mediumseagreen;
+`;
+
 const BtnWrap = styled.div`
   display: flex;
   align-items: center;
@@ -119,4 +125,17 @@ const BtnWrap = styled.div`
   margin: 1rem 0;
 
   border: 1px solid whitesmoke;
+`;
+
+const UtilList = styled.ul`
+  text-align: left;
+  padding-left: 20px;
+
+  font-size: 15px;
+`;
+
+const UtilItem = styled.li`
+  font-weight: 400;
+  padding-top: 20px;
+  color: ${(props) => (props.className === "logout" ? "red" : "black")};
 `;

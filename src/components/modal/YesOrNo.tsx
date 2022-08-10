@@ -3,6 +3,13 @@ import styled from "styled-components";
 import { flexCenter } from "../../style/LayoutStyle";
 import { useSetModal } from "../../context/modalContext";
 
+interface CenterModalProps {
+  message: string;
+  ok: string;
+  cancel: string;
+  onClick?: () => void;
+}
+
 export default function YesOrNo() {
   const setModal = useSetModal();
 
