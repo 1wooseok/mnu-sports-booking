@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { BrowserRouter, Switch, Route } from "react-router-dom"
-
 // Layout
 import Footer from "../components/layout/footer/Footer";
 
@@ -19,7 +18,7 @@ import KakaoRedirectPage from '../pages/KakaoRedirectPage';
 import ModalContainer from '../components/modal/ModalContainer';
 
 // Commnuity
-import CommunityPage from "../pages/CommunityPage";
+import CommunitySuspense from '../components/suspense/CommunitySuspense';
 import PostPage from "../pages/PostPage";
 
 // Actuvuty
@@ -30,6 +29,8 @@ import ProfilePage from "../pages/ProfilePage";
 
 // Band
 import BandPage from "../pages/BandPage";
+
+const CommunityPage = React.lazy(() => import("../pages/CommunityPage"));
 
 function Router() {
   return (
@@ -47,7 +48,9 @@ function Router() {
           <KakaoRedirectPage />
         </Route>
         <Route exact path="/community">
-          <CommunityPage />
+          <Suspense fallback={<CommunitySuspense />}>
+            <CommunityPage />
+          </Suspense>
         </Route>
         <Route exact path="/community/:postId">
           <PostPage />

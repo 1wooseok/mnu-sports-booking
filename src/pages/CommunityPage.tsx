@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import Card from "../components/card/Card";
 import { CardList } from "../style/LayoutStyle";
 import Header from "../components/layout/header/Header";
 import CommunityHeader from "../components/community/CommunityHeader";
 import CommunityCardModel from "../types/Community";
+import CommunitySuspense from "../components/suspense/CommunitySuspense";
+import { TimePickerLoader } from "../components/modal/loading";
 import axios from "axios";
 
 export default function CommunityPage() {
@@ -16,10 +18,10 @@ export default function CommunityPage() {
     })();
   }, []);
 
-  if (!posts) return <h1>로딩중...</h1>;
+  if (!posts) return <CommunitySuspense />;
 
   return (
-    <>
+    <Suspense fallback={<CommunitySuspense />}>
       <Header>
         <CommunityHeader />
       </Header>
@@ -28,6 +30,6 @@ export default function CommunityPage() {
           <Card key={post.postId} post={post} />
         ))}
       </CardList>
-    </>
+    </Suspense>
   );
 }
