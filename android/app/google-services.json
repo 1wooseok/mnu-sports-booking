@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "878227335450",
+    "project_id": "mnubooking",
+    "storage_bucket": "mnubooking.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:878227335450:android:dd1c2e0cf4e69e8adc24a3",
+        "android_client_info": {
+          "package_name": "com.mnu.booking"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "878227335450-n1e81josik5lpbmnurb26ihrnl9qrbqb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJW33KvPvWA_qjUZlniOdlbXCB8OBBzL4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "878227335450-n1e81josik5lpbmnurb26ihrnl9qrbqb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

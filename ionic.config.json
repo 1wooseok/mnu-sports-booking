@@ -1,0 +1,7 @@
+{
+  "name": "mnubooking",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}

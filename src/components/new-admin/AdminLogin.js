@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
 import { postAdminLogin } from "../../apis/api";
+import { useNavigate } from "../../hook/useNavigate";
 
 export default function AdminLogin() {
   const navigate = useNavigate();
@@ -20,7 +20,8 @@ export default function AdminLogin() {
   async function requestAdminLogin(data) {
     try {
       await postAdminLogin(data);
-      return navigate("/admin/manage", { replace: true });
+      navigate("/admin/manage");
+      return;
     } catch (err) {
       if (err.response.status === 404) {
         alert("입력을 확인해 주세요.");

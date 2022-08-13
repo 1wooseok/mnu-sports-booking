@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 function KakaoChannel() {
   return (
-    <KakaoChatMob href="https://pf.kakao.com/_ScXxib"; target="_blank">
+    <KakaoChatMob href="https://pf.kakao.com/_ScXxib" target="_blank">
       <img src="/asset/images/KAKAO_CHANNEL.png" width="30px" height="30px" alt="kakao+" />
     </KakaoChatMob>
   );

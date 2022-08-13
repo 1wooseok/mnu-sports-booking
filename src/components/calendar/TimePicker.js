@@ -6,13 +6,14 @@ import {
   setTimeListFromReservedTime,
 } from "../../utils/format";
 import { useDateState, useDateDispatch } from "../../context/dateContext";
-import { getReservedTime } from "../../apis/api";
 import { isValid, isPastTime } from "../../utils/check";
-import styled from "styled-components";
-import ReserveBtn from "./ReserveBtn";
 import { TimePickerLoader } from "../modal/loading";
-import SurveyLink from "./SurvetLink";
+import { getReservedTime } from "../../apis/api";
 import KakaoChannel from "../../apis/KakaoChannel";
+import ReserveBtn from "./ReserveBtn";
+import styled from "styled-components";
+import { flexCenter } from "../../style/LayoutStyle";
+
 const openingTime = 8;
 const closingTime = 19;
 const operatingTime = range(openingTime, closingTime);
@@ -73,17 +74,10 @@ function TimePicker() {
           </StTimeBtn>
         );
       })}
-      <StCalendarFooter>
-        <StKakaoWrap>
-          <KakaoChannel />
-        </StKakaoWrap>
-        <StReserveWrap>
-          <ReserveBtn fno={fno} userPick={userPick} dateState={dateState} />
-        </StReserveWrap>
-        <StSurveyWrap>
-          <SurveyLink />
-        </StSurveyWrap>
-      </StCalendarFooter>
+      <StKakaoWrap>
+        <KakaoChannel />
+      </StKakaoWrap>
+      <ReserveBtn fno={fno} userPick={userPick} dateState={dateState} />
       {!reservedTime && <TimePickerLoader />}
     </StTimeContainer>
   );
@@ -92,7 +86,9 @@ function TimePicker() {
 // ----- Functions -----
 async function getReservedTimeByDate(fno, dateState, dispatch) {
   if (!dateState.viewDate) return;
+
   dispatch({ type: "LOADING" });
+
   try {
     const res = await getReservedTime(fno, {
       date: fullDateFormatter(dateState),
@@ -108,23 +104,31 @@ async function getReservedTimeByDate(fno, dateState, dispatch) {
 
 function setDisableTimeList(arr, reservedList, state) {
   const TODAY = new Date();
+
   const isInvalid = !isValid(TODAY, state, state.viewDate);
+
   const isPrevDate =
     state.viewYear <= TODAY.getFullYear() &&
     state.viewMonth < TODAY.getMonth() + 1;
+
   const result = arr.map((hour) => {
     let isDisable = "";
+
     if (isPrevDate) {
       isDisable = "__disable";
     }
+
     if (isInvalid && isPastTime(hour)) {
       isDisable = "__disable";
-    } // 시간과 동시에 만족해야하기때문에 오류임.
+    }
+
     if (isReservedTime(reservedList, hour)) {
       isDisable = "__disable";
     }
+
     return { isDisable, hour };
   });
+
   return result;
 }
 
@@ -134,20 +138,21 @@ function isReservedTime(reservedList, hour) {
 
 // ----- Style -----
 const StTimeContainer = styled.div`
-  display: flex;
-  justify-content: center;
+  ${flexCenter}
+  position: relative;
+  
+  margin: 0.5rem 0;
+
   flex-flow: row wrap;
 `;
 
 const StTimeBtn = styled.div`
+  ${flexCenter}
+
   width: calc(100% / 5);
 
   border: 1px solid grey;
   border-radius: 5px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
 
   margin: 0.5em;
   padding: 0.1em 0 0.2em 0;
@@ -158,8 +163,8 @@ const StTimeBtn = styled.div`
     props.className === "pick"
       ? "white"
       : props.className === "adjacentTime"
-      ? "mediumseagreen"
-      : "black"};
+        ? "mediumseagreen"
+        : "black"};
 
   background-color: ${(props) =>
     props.className === "pick" ? "mediumseagreen" : "white"};
@@ -168,28 +173,15 @@ const StTimeBtn = styled.div`
 
   &:hover {
     cursor: ${(props) =>
-      props.className === "__disable" ? "not-allowed" : "pointer"};
+    props.className === "__disable" ? "not-allowed" : "pointer"};
   }
 `;
 
-const StCalendarFooter = styled.div`
-  width: 100%;
-  display: flex;
-  ${"" /* justify-content: space-around; */}
-  align-items: end;
-`;
-
 const StKakaoWrap = styled.div`
-  flex: 1.5;
-  line-height: 0.1em;
-
-`;
-const StReserveWrap = styled.div`
-  flex: 2;
-
-`;
-const StSurveyWrap = styled.div`
-  flex: 1.5;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 3;
 `;
 
 export default React.memo(TimePicker);

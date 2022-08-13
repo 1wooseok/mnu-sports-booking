@@ -20,11 +20,17 @@ function CalendarContainer() {
 const StCalendarContainer = styled.div`
   width: 90vw;
   max-width: 470px;
-  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
-  border-radius: 10px;
+
   padding: 10px 0;
-  font-weight: bold;
-  margin: 0 auto 0 auto;
+  margin: 1.2rem auto;
+
+  background-color: white;
+
+  border-radius: 10px;
+
+  font-weight: 500;
+
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
 `;
 
 export default CalendarContainer;

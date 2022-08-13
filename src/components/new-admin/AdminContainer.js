@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import SearchUser from "./SearchUser";
 import styled from "styled-components";
 import CardContainer from "./CardContainer";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "../../hook/useNavigate";
 import AdminDatePicker from "./AdminDatePicker";
 import { postAdminLogout } from "../../apis/api";
 
@@ -15,7 +15,7 @@ function AdminContainer() {
     try {
       await postAdminLogout();
       alert("로그아웃 되었습니다.");
-      navigate("/admin/login", { replace: true });
+      navigate("/admin/login");
     } catch (err) {
       console.log(err);
     }
