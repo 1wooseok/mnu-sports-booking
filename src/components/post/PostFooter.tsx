@@ -1,11 +1,17 @@
 import React from "react";
 import styled from "styled-components";
+import CommentModel from "../../types/Comment";
 
-export default function PostFooter() {
+interface PostFooterProps {
+  viewCount: number;
+  comments: CommentModel[];
+}
+
+export default function PostFooter({ viewCount, comments }: PostFooterProps) {
   return (
     <Wrap>
-      <Text>조회수 1</Text>
-      <Text>댓글 2</Text>
+      <Text>조회수 {viewCount}</Text>
+      <Text>댓글 {comments.length}</Text>
     </Wrap>
   );
 }

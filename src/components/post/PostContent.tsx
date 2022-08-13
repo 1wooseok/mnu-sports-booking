@@ -2,13 +2,24 @@ import React from "react";
 import styled from "styled-components";
 import { Tag } from "../../style/CommonStyle";
 
-export default function PostContent() {
-  const images = [];
+interface PostContentProps {
+  category: string;
+  title: string;
+  content: string;
+  images: string[];
+}
+
+export default function PostContent({
+  category,
+  title,
+  content,
+  images,
+}: PostContentProps) {
   return (
     <Wrap>
-      <Tag>풋살</Tag>
-      <Head>오늘 축구할사람</Head>
-      <Content>6시에 공대 풋살장에서 하실분?!</Content>
+      <Tag>{category}</Tag>
+      <Head>{title}</Head>
+      <Content>{content}</Content>
       {images.length > 0 && (
         <ImageList>
           <ImageWrap>
@@ -45,7 +56,6 @@ const Content = styled.p`
 const ImageList = styled.ul`
   margin: 32px 0px 0px -18px;
   width: calc(100% + 36px);
-  background-color: red;
 `;
 
 const ImageWrap = styled.li`

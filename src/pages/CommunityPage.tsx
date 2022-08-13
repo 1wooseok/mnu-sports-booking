@@ -5,23 +5,22 @@ import Header from "../components/layout/header/Header";
 import CommunityHeader from "../components/community/CommunityHeader";
 import CommunityCardModel from "../types/Community";
 import CommunitySuspense from "../components/suspense/CommunitySuspense";
-import { TimePickerLoader } from "../components/modal/loading";
-import axios from "axios";
+import api from "../apis/core/config";
 
 export default function CommunityPage() {
   const [posts, setPosts] = useState<CommunityCardModel[] | null>(null);
 
   useEffect(() => {
     (async () => {
-      const { data } = await axios.get("http://localhost:3001/posts");
-      setPosts(data);
+      const res: any = await api.get("/posts");
+      setPosts(res);
     })();
   }, []);
 
   if (!posts) return <CommunitySuspense />;
 
   return (
-    <Suspense fallback={<CommunitySuspense />}>
+    <>
       <Header>
         <CommunityHeader />
       </Header>
@@ -30,6 +29,6 @@ export default function CommunityPage() {
           <Card key={post.postId} post={post} />
         ))}
       </CardList>
-    </Suspense>
+    </>
   );
 }

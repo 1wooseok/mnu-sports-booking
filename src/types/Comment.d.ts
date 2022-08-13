@@ -2,13 +2,12 @@ export default interface CommentModel {
   postId: number;
   commentId: number;
   avatar: string;
-  usreName: string;
-  writeDate: string;
-  childComments: ChildCommentModel[];
+  userName: string;
+  date: string;
+  content: string;
+  childComments?: ChildCommentModel[];
 }
 
-interface ChildCommentModel {
-  postId: number;
-  parentCommentId: number;
-  
+interface ChildCommentModel extends CommentModel {
+  childCommentId: number;
 }

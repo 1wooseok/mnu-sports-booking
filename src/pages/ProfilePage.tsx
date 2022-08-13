@@ -59,7 +59,9 @@ export default function ProfilePage() {
         </BtnWrap>
         <UtilList>
           <UtilItem>
-            <a href="https://naver.me/FIp9ILfg">피드백 남기러가기</a>
+            <a href="https://naver.me/FIp9ILfg" target="_blank">
+              피드백 남기러가기
+            </a>
           </UtilItem>
           <UtilItem className="logout">로그아웃</UtilItem>
         </UtilList>

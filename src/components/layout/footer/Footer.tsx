@@ -14,27 +14,25 @@ type MenuTableType = {
 };
 
 const MenuTable: MenuTableType = {
-  예약: "/booking/1",
-  커뮤니티: "/community",
-  밴드: "/band",
-  프로필: "/profile",
+  "/booking/1": "예약",
+  "/community": "커뮤니티",
+  "/band": "밴드",
+  "/profile": "프로필",
 } as const;
 
 type MENUS = typeof MenuTable[keyof typeof MenuTable];
 
 function Footer() {
   const navigate = useNavigate();
-  const [currentTab, setCurrentTab] = useState<string>("예약");
+  const { pathname } = location;
+  const [currentTab, setCurrentTab] = useState<MENUS>(MenuTable[pathname]);
 
-  const onClick = useCallback(
-    (title: MENUS, loginRequired: boolean = false) => {
-      if (loginRequired) {
-      }
-      setCurrentTab(title);
-      navigate(MenuTable[title]);
-    },
-    []
-  );
+  const onClick = useCallback((path: MENUS, loginRequired: boolean = false) => {
+    if (loginRequired) {
+    }
+    setCurrentTab(MenuTable[path]);
+    navigate(path);
+  }, []);
 
   return (
     <Wrap>
@@ -43,28 +41,28 @@ function Footer() {
           title="예약"
           size="small"
           icon={<BsCalendarDate />}
-          onClick={() => onClick("예약")}
+          onClick={() => onClick("/booking/1")}
           currentTab={currentTab}
         />
         <IconButton
           title="커뮤니티"
           size="small"
           icon={<IoChatboxOutline />}
-          onClick={() => onClick("커뮤니티")}
+          onClick={() => onClick("/community")}
           currentTab={currentTab}
         />
         <IconButton
           title="밴드"
           size="small"
           icon={<MdAttachFile />}
-          onClick={() => onClick("밴드")}
+          onClick={() => onClick("/band")}
           currentTab={currentTab}
         />
         <IconButton
           title="프로필"
           size="small"
           icon={<AiOutlineUser />}
-          onClick={() => onClick("프로필")}
+          onClick={() => onClick("/profile")}
           currentTab={currentTab}
         />
       </MenuList>

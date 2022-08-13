@@ -7,12 +7,12 @@ interface PostTitelPrpos {
   date: string;
 }
 
-export default function PostInfo() {
+export default function PostInfo({ avatar, userName, date }: PostTitelPrpos) {
   return (
     <Wrap>
       <Avatar />
-      <Name>석우정</Name>
-      <Date>2022년 08월 10일</Date>
+      <Name>{userName}</Name>
+      <Date>{date}</Date>
     </Wrap>
   );
 }

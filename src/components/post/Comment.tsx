@@ -2,31 +2,61 @@ import React from "react";
 import styled from "styled-components";
 import { useSetModal } from "../../context/modalContext";
 import YesOrNo from "../modal/YesOrNo";
+import CommentModel from "../../types/Comment";
+import { flexCenter } from "../../style/LayoutStyle";
+import { GoCommentDiscussion } from "react-icons/go";
 
-export default function Comment() {
+interface CommentsProps {
+  comments: CommentModel[];
+}
+
+export default function Comment({ comments }: CommentsProps) {
+  if (comments.length === 0) {
+    return (
+      <None>
+        <GoCommentDiscussion />
+        <p>첫 댓글을 남겨보세요.</p>
+      </None>
+    );
+  }
+
   return (
     <Wrap>
       <List>
-        <CommentItem />
-        <CommentItem />
-        <CommentItem />
-        <CommentItem />
+        {comments.map((comment, idx) => (
+          <CommentItem
+            key={idx}
+            postId={comment.postId}
+            commentId={comment.commentId}
+            avatar={comment.avatar}
+            userName={comment.userName}
+            content={comment.content}
+            date={comment.date}
+          />
+        ))}
       </List>
     </Wrap>
   );
 }
 
-function CommentItem() {
+function CommentItem({
+  postId,
+  commentId,
+  avatar,
+  userName,
+  content,
+  date,
+}: CommentModel) {
   const setModal = useSetModal();
 
   return (
     <ListItem>
       <Avatar />
       <div>
-        <Name>통키</Name>
-        <Content>허허허</Content>
+        <Name>{userName}</Name>
+        <Content>{content}</Content>
         <Date>
-          <span>8월 11일</span>
+          <span>{date}</span>
           <Text>답글</Text>
           <Text onClick={() => setModal(<YesOrNo />)}>삭제</Text>
         </Date>
@@ -85,7 +115,7 @@ const Name = styled.div`
 const Content = styled.div`
   margin: 5px 0px 10px;
   line-height: 20px;
-  font-size: 15px;
+  font-size: 13.5px;
   word-break: break-all;
 `;
 
@@ -102,4 +132,25 @@ const Text = styled.span`
   font-weight: 500;
   line-height: normal;
   cursor: pointer;
+`;
+
+const None = styled.h2`
+  ${flexCenter}
+  flex-direction: column;
+  width: 100%;
+  height: 220px;
+
+  overflow: hidden;
+
+  font-size: 15px;
+  font-weight: 500;
+
+  color: rgb(200, 200, 200);
+  background-color: white;
+
+  svg {
+    width: 30px;
+    height: 30px;
+    margin-bottom: 13px;
+  }
 `;
