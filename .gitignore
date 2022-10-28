@@ -12,7 +12,7 @@
 /build
 
 # third-party
-kakao-api.js
+# kakao-api.js
 
 # misc
 .DS_Store
